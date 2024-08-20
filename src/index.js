@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import App from "./App";
 import Blog from "./Blog"; // Import your Blog component
+import NotFound from "./NotFound"; // Import your NotFound component
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
@@ -10,6 +11,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/blog" element={<Blog />} />
+      <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
     </Routes>
   </Router>,
   document.getElementById("root")
