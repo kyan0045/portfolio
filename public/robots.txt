@@ -3,5 +3,14 @@
 User-agent: Google
 Disallow:
 
+User-agent: Google Inspection Tool smartphone
+Disallow:
+
+User-agent: Google Inspection Tool
+Disallow:
+
+User-agent: Googlebot
+Disallow:
+
 User-agent: *
 Disallow: /
