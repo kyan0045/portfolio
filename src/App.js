@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import "./App.css";
 import { FaLink, FaExternalLinkAlt } from "react-icons/fa";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 const Navbar = () => {
   return (
@@ -257,6 +259,8 @@ export default function App() {
         <About />
         <Projects ref={projectsRef} />
       </div>
+      <SpeedInsights />
+      <Analytics />
     </div>
   );
 }
