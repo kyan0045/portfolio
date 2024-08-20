@@ -15,3 +15,54 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+/* Add any custom styles here */
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(25%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-right {
+  animation: slideInFromRight 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-05s {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.fade-in-1s {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.fade-in-2s {
+  animation: fadeIn 3s ease-in-out;
+}
+
+.fade-in-3s {
+  animation: fadeIn 3s ease-in-out;
+}
+

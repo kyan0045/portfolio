@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 const Navbar = () => {
   return (
-    <nav className="sticky top-0 flex items-center justify-between p-6 bg-gray-900 fade-in-05s">
+    <nav className="sticky top-0 flex items-center justify-between p-6 bg-gray-900">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <a
           href="./"
@@ -59,13 +59,13 @@ const Hero = ({ projectsRef }) => {
   return (
     <div className="flex flex-col lg:flex-row items-center justify-between py-20">
       <div className="lg:w-1/2 mb-10 lg:mb-0">
-        <h1 className="text-5xl font-bold mb-4 text-teal-200 fade-in-1s">
+        <h1 className="text-5xl font-bold mb-4 text-teal-200 fade-in-05s">
           Kyan Bosman
         </h1>
-        <h2 className="text-3xl font-semibold mb-6 text-white fade-in-1s">
+        <h2 className="text-3xl font-semibold mb-6 text-white fade-in-05s">
           Backend Developer
         </h2>
-        <p className="text-lg mb-4 text-gray-300 fade-in-1s">
+        <p className="text-lg mb-4 text-gray-300 fade-in-05s">
           Backend developer with a passion for building scalable and efficient
           applications. Proficient in NodeJS & C++. Specializing in applications
           like Discord/Telegram (self)bots and APIs.
@@ -74,17 +74,17 @@ const Hero = ({ projectsRef }) => {
           <button
             onClick={scrollToProjects}
             type="button"
-            className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold py-2 px-4 rounded mr-2 fade-in-2s">
+            className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold py-2 px-4 rounded mr-2 fade-in-05s">
             View Projects
           </button>
           <button
             type="button"
-            className="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold py-2 px-4 rounded mr-4 fade-in-2s">
+            className="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold py-2 px-4 rounded mr-4 fade-in-05s">
             Contact Me
           </button>
         </div>
       </div>
-      <div className="lg:w-1/2 flex justify-center fade-in-1s">
+      <div className="lg:w-1/2 flex justify-center fade-in-05s">
         <div className="w-64 h-64 rounded-full shadow-lg bg-gray-700 overflow-hidden">
           <img
             src="/pfp.jpg"
@@ -99,7 +99,7 @@ const Hero = ({ projectsRef }) => {
 
 const About = () => {
   return (
-    <div className="py-20 fade-in-2s">
+    <div className="py-20 fade-in-1s">
       <h2 id="about" className="text-4xl font-bold mb-8 text-teal-200">
         About
       </h2>
@@ -208,7 +208,7 @@ const ProjectCard = ({ title, description, image, link }) => {
 
 const Projects = React.forwardRef((props, ref) => {
   return (
-    <div ref={ref} className="py-20 fade-in-3s">
+    <div ref={ref} className="py-20 fade-in-1s">
       <h2 id="projects" className="text-4xl font-bold mb-8 text-teal-200">
         Projects
       </h2>
@@ -250,9 +250,9 @@ const Projects = React.forwardRef((props, ref) => {
   );
 })
 
-const ContactMe = React.forwardRef((props, ref) => {
+const ContactMe = () => {
   return (
-    <div ref={ref} className="py-20 fade-in-4s">
+    <div className="py-20 fade-in-1s">
       <h2 id="contact" className="text-4xl font-bold mb-8 text-teal-200">
         Contact
       </h2>
@@ -296,7 +296,18 @@ const ContactMe = React.forwardRef((props, ref) => {
       </div>
     </div>
   );  
-}); 
+}
+
+const Footer = () => {
+  return (
+    <footer className="pb-10 text-center text-gray-300">
+      <p>
+        &copy; {new Date().getFullYear()} Kyan Bosman. All rights
+        reserved.
+      </p>
+    </footer>
+  );  
+} 
 
 export default function App() {
   const projectsRef = useRef(null);
@@ -309,6 +320,7 @@ export default function App() {
         <About />
         <Projects ref={projectsRef} />
         <ContactMe />
+        <Footer />
       </div>
       <SpeedInsights />
       <Analytics />
