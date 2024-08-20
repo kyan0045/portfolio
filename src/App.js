@@ -51,9 +51,13 @@ const Navbar = () => {
   );
 };
 
-const Hero = ({ projectsRef }) => {
+const Hero = ({ projectsRef, contactRef }) => {
   const scrollToProjects = () => {
     projectsRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToContactMe = () => {
+    contactRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -78,6 +82,7 @@ const Hero = ({ projectsRef }) => {
             View Projects
           </button>
           <button
+            onClick={scrollToContactMe}
             type="button"
             className="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold py-2 px-4 rounded mr-4 fade-in-05s">
             Contact Me
@@ -250,9 +255,9 @@ const Projects = React.forwardRef((props, ref) => {
   );
 })
 
-const ContactMe = () => {
+const ContactMe = React.forwardRef((props, ref) => {
   return (
-    <div className="py-20 fade-in-1s">
+    <div ref={ref} className="py-20 fade-in-1s">
       <h2 id="contact" className="text-4xl font-bold mb-8 text-teal-200">
         Contact
       </h2>
@@ -266,7 +271,9 @@ const ContactMe = () => {
           <p className="text-gray-300">
             <a
               href="mailto:contact@kyan.space"
-              className="text-teal-200 hover:text-teal-400">contact@kyan.space</a>
+              className="text-teal-200 hover:text-teal-400">
+              contact@kyan.space
+            </a>
           </p>
         </div>
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
@@ -296,7 +303,7 @@ const ContactMe = () => {
       </div>
     </div>
   );  
-}
+});
 
 const Footer = () => {
   return (
@@ -311,15 +318,16 @@ const Footer = () => {
 
 export default function App() {
   const projectsRef = useRef(null);
+  const contactRef = useRef(null);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <Navbar />
       <div className="container mx-auto px-4">
-        <Hero projectsRef={projectsRef} />
+        <Hero projectsRef={projectsRef} contactRef={contactRef} />
         <About />
         <Projects ref={projectsRef} />
-        <ContactMe />
+        <ContactMe ref={contactRef}/>
         <Footer />
       </div>
       <SpeedInsights />
