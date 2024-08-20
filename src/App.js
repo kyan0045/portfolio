@@ -185,12 +185,14 @@ const ProjectCard = ({ title, description, image, link }) => {
             <a
               href={link}
               target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-teal-400 flex-grow">
               {title}
             </a>
             <a
               href={link}
               target="_blank"
+              rel="noopener noreferrer"
               className="ml-2 text-teal-200 hover:text-teal-400">
               <FaLink />
             </a>
@@ -246,7 +248,55 @@ const Projects = React.forwardRef((props, ref) => {
       </div>
     </div>
   );
-});
+})
+
+const ContactMe = React.forwardRef((props, ref) => {
+  return (
+    <div ref={ref} className="py-20 fade-in-4s">
+      <h2 id="contact" className="text-4xl font-bold mb-8 text-teal-200">
+        Contact
+      </h2>
+      <p className="text-lg mb-12 text-gray-300">
+        Interested in hiring me as a freelancer, working together or just want
+        to say hi? Feel free to reach out to me!
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 className="text-2xl font-semibold mb-4 text-white">Email</h3>
+          <p className="text-gray-300">
+            <a
+              href="mailto:contact@kyan.space"
+              className="text-teal-200 hover:text-teal-400">contact@kyan.space</a>
+          </p>
+        </div>
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 className="text-2xl font-semibold mb-4 text-white">Socials</h3>
+          <p className="text-gray-300">
+            <a
+              href="https://github.com/kyan0045"
+              className="text-teal-200 hover:text-teal-400">
+              GitHub
+            </a>
+          </p>
+          <p className="text-gray-300">
+            <a
+              href="https://discord.com/users/1101294362505269379"
+              className="text-teal-200 hover:text-teal-400">
+              Discord
+            </a>
+          </p>
+          <p className="text-gray-300">
+            <a
+              href="https://www.linkedin.com/in/kyan-bosman-162507281/"
+              className="text-teal-200 hover:text-teal-400">
+              LinkedIn
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  );  
+}); 
 
 export default function App() {
   const projectsRef = useRef(null);
@@ -258,6 +308,7 @@ export default function App() {
         <Hero projectsRef={projectsRef} />
         <About />
         <Projects ref={projectsRef} />
+        <ContactMe />
       </div>
       <SpeedInsights />
       <Analytics />
