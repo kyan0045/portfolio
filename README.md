@@ -1,7 +1,5 @@
 # <img src="public/site-logo.png" alt="Site Logo" width="20"/> Kyan Bosman's Portfolio
 
-Welcome to the personal portfolio of Kyan Bosman, also known as Kyan0045. I am a backend developer from the Netherlands. This website showcases my projects, skills, and provides a way to contact me for development services.
-
 <table>
   <tr>
     <td>
