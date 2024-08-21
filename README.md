@@ -44,16 +44,16 @@ Make sure you have the following installed on your machine:
 
 2. Install the dependencies
 
-```sh
-npm install
-```
+   ```sh
+   npm install
+   ```
 
 ### Running the App
 
 To start the development server, run:
-```sh
-npm start
-```
+   ```sh
+   npm start
+   ```
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes. You may also see any lint errors in the console.
 
 ## Available Scripts
