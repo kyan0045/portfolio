@@ -6,7 +6,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./components/BlogPost";
 import Tag from "./pages/Tag";
 import TagPage from "./components/TagPage";
-import NotFound from "./NotFound";
+import NotFound from "./pages/NotFound";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(

@@ -19,22 +19,22 @@ const Navbar = () => {
         <div className="text-sm xl:flex-grow"></div>
         <div className="flex space-x-4">
           <a
-            href="./"
+            href="../"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
             Home
           </a>
           <a
-            href="./#about"
+            href="../#about"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
             About
           </a>
           <a
-            href="./#projects"
+            href="../#projects"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
             Projects
           </a>
           <a
-            href="./#contact"
+            href="../#contact"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
             Contact
           </a>
