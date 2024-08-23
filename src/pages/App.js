@@ -10,7 +10,8 @@ const Navbar = () => {
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <a
           href="./"
-          className="font-semibold text-2xl tracking-widest no-underline hover:text-teal-400 transition duration-300 ease-in-out">
+          className="font-semibold text-2xl tracking-widest no-underline hover:text-teal-400 transition duration-300 ease-in-out"
+        >
           &lt;/&gt;
         </a>
       </div>
@@ -19,29 +20,34 @@ const Navbar = () => {
         <div className="flex space-x-4">
           <a
             href="#about"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
+          >
             About
           </a>
           <a
             href="#projects"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
+          >
             Projects
           </a>
           <a
             href="/blog"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
+          >
             Blog
           </a>
           <a
             href="#contact"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
+          >
             Contact
           </a>
           <a
             href="https://github.com/kyan0045"
             target="_blank"
             rel="noopener noreferrer"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105 inline-flex items-center space-x-1">
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105 inline-flex items-center space-x-1"
+          >
             <span>GitHub</span>
             <FaExternalLinkAlt className="pl-1 mb-1 inline-block" />
           </a>
@@ -78,13 +84,15 @@ const Hero = ({ projectsRef, contactRef }) => {
           <button
             onClick={scrollToProjects}
             type="button"
-            className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold py-2 px-4 rounded mr-2 fade-in-05s">
+            className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold py-2 px-4 rounded mr-2 fade-in-05s"
+          >
             View Projects
           </button>
           <button
             onClick={scrollToContactMe}
             type="button"
-            className="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold py-2 px-4 rounded mr-4 fade-in-05s">
+            className="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold py-2 px-4 rounded mr-4 fade-in-05s"
+          >
             Contact Me
           </button>
         </div>
@@ -191,15 +199,10 @@ const ProjectCard = ({ title, description, image, link }) => {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-teal-400 flex-grow">
+              className="flex-grow hover-link flex items-center"
+            >
               {title}
-            </a>
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-2 text-teal-200 hover:text-teal-400">
-              <FaLink />
+              <FaLink className="ml-2" />
             </a>
           </>
         ) : (
@@ -231,12 +234,12 @@ const Projects = React.forwardRef((props, ref) => {
               className="object-contain"
             />
           }
-          link="https://github.com/kyan0045/catchtwo" 
+          link="https://github.com/kyan0045/catchtwo"
         />
         <ProjectCard
           title="Pokehint"
           description="Originally developed as a backend tool to power CatchTwo, Pokehint is an open-source NPM package that provides automated hints and assists with Pokétwo commands. But it doesn’t stop there—Pokehint is available for any project looking to enhance the Pokétwo experience, making it a versatile solution for automating and optimizing gameplay across the board."
-          link="https://github.com/kyan0045/pokehint" 
+          link="https://github.com/kyan0045/pokehint"
         />
         <ProjectCard
           title="Portfolio"
@@ -248,12 +251,12 @@ const Projects = React.forwardRef((props, ref) => {
               className="object-contain"
             />
           }
-          link="https://github.com/kyan0045/portfolio" 
+          link="https://github.com/kyan0045/portfolio"
         />
       </div>
     </div>
   );
-})
+});
 
 const ContactMe = React.forwardRef((props, ref) => {
   return (
@@ -271,7 +274,8 @@ const ContactMe = React.forwardRef((props, ref) => {
           <p className="text-gray-300">
             <a
               href="mailto:contact@kyan.space"
-              className="text-teal-200 hover:text-teal-400">
+              className="text-teal-200 hover:text-teal-400"
+            >
               contact@kyan.space
             </a>
           </p>
@@ -281,40 +285,40 @@ const ContactMe = React.forwardRef((props, ref) => {
           <p className="text-gray-300">
             <a
               href="https://github.com/kyan0045"
-              className="text-teal-200 hover:text-teal-400">
+              className="text-teal-200 hover:text-teal-400"
+            >
               GitHub
             </a>
           </p>
           <p className="text-gray-300">
             <a
               href="https://discord.com/users/1101294362505269379"
-              className="text-teal-200 hover:text-teal-400">
+              className="text-teal-200 hover:text-teal-400"
+            >
               Discord
             </a>
           </p>
           <p className="text-gray-300">
             <a
               href="https://www.linkedin.com/in/kyan-bosman-162507281/"
-              className="text-teal-200 hover:text-teal-400">
+              className="text-teal-200 hover:text-teal-400"
+            >
               LinkedIn
             </a>
           </p>
         </div>
       </div>
     </div>
-  );  
+  );
 });
 
 const Footer = () => {
   return (
     <footer className="pb-10 text-center text-gray-300">
-      <p>
-        &copy; {new Date().getFullYear()} Kyan Bosman. All rights
-        reserved.
-      </p>
+      <p>&copy; {new Date().getFullYear()} Kyan Bosman. All rights reserved.</p>
     </footer>
-  );  
-} 
+  );
+};
 
 export default function App() {
   const projectsRef = useRef(null);
@@ -327,7 +331,7 @@ export default function App() {
         <Hero projectsRef={projectsRef} contactRef={contactRef} />
         <About />
         <Projects ref={projectsRef} />
-        <ContactMe ref={contactRef}/>
+        <ContactMe ref={contactRef} />
         <Footer />
       </div>
       <SpeedInsights />

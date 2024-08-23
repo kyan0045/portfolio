@@ -1,12 +1,12 @@
 import React from 'react';
-import { FaLink, FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const Navbar = () => {
     return (
       <nav className="sticky top-0 flex items-center justify-between p-6 bg-gray-900">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <a
-            href="./"
+            href="../"
             className="font-semibold text-2xl tracking-widest no-underline hover:text-teal-400 transition duration-300 ease-in-out">
             &lt;/&gt;
           </a>
@@ -15,12 +15,12 @@ const Navbar = () => {
           <div className="text-sm xl:flex-grow"></div>
           <div className="flex space-x-4">
             <a
-              href="#about"
+              href="../#about"
               className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
               About
             </a>
             <a
-              href="#projects"
+              href="../#projects"
               className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
               Projects
             </a>
@@ -30,7 +30,7 @@ const Navbar = () => {
               Blog
             </a>
             <a
-              href="#contact"
+              href="../#contact"
               className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 bg-gray-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
               Contact
             </a>
