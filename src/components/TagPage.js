@@ -16,7 +16,6 @@ const TagPage = () => {
         const filteredBlogs = data.filter(blog => blog.tags.includes(tag));
         setBlogs(filteredBlogs);
 
-        // Extract popular tags
         const tags = data.flatMap(blog => blog.tags);
         const tagCounts = tags.reduce((acc, tag) => {
           acc[tag] = (acc[tag] || 0) + 1;

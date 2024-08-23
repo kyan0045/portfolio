@@ -10,8 +10,6 @@ body {
   max-width: 1200px;
 }
 
-/* Add any custom styles here */
-
 @keyframes slideInFromRight {
   from {
     transform: translateX(25%);
@@ -53,11 +51,11 @@ body {
 }
 
 .hover-link {
-  color: #81E6D9; /* Initial color, teal-200 */
+  color: #81E6D9;
 }
 
 .hover-link:hover {
-  color: #4FD1C5; /* Hover color, teal-400 */
+  color: #4FD1C5;
 }
 
 /* Markdown styles */
@@ -104,19 +102,19 @@ body {
 
 /* Specific language styling */
 .markdown .language-js {
-  color: #f7df1e; /* JavaScript yellow */
+  color: #f7df1e;
 }
 
 .markdown .language-css {
-  color: #2965f1; /* CSS blue */
+  color: #2965f1;
 }
 
 .markdown .language-html {
-  color: #e34c26; /* HTML orange */
+  color: #e34c26;
 }
 
 .markdown .language-json {
-  color: #cb3837; /* JSON red */
+  color: #cb3837;
 }
 
 /* Table of Contents styles */
@@ -142,4 +140,23 @@ body {
 
 .table-of-contents a:hover {
   @apply text-teal-200;
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d3748;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4fd1c5;
+  border-radius: 10px;
+  border: 3px solid #2d3748;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a3f3ef;
 }

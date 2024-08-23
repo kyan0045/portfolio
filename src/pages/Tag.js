@@ -10,13 +10,11 @@ const Tag = () => {
     fetch('/content/blogs.json')
       .then((response) => response.json())
       .then((data) => {
-        // Extract tags and their counts
         const tagCounts = data.flatMap(blog => blog.tags).reduce((acc, tag) => {
           acc[tag] = (acc[tag] || 0) + 1;
           return acc;
         }, {});
 
-        // Convert to array and sort by count
         const sortedTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
         setTags(sortedTags);
       });
