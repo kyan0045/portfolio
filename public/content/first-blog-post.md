@@ -9,7 +9,7 @@ Welcome to my first blog post! This is a sample post to demonstrate how Markdown
 - [Links](https://example.com)
 - Code blocks
 
-```javascript
+```js
 function helloWorld() {
   console.log('Hello, World!');
 }
