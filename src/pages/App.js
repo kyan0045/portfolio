@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "./App.css";
+import "../App.css";
 import { FaLink, FaExternalLinkAlt } from "react-icons/fa";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
