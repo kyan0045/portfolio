@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import App from "./App";
-import Blog from "./Blog"; // Import your Blog component
-import NotFound from "./NotFound"; // Import your NotFound component
+import App from "./pages/App";
+import Blog from "./pages/Blog";
+import BlogPost from "./components/BlogPost";
+import Tag from "./pages/Tag";
+import TagPage from "./components/TagPage";
+import NotFound from "./NotFound";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
@@ -11,13 +14,13 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/blog" element={<Blog />} />
-      <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
+      <Route path="/blog/:id" element={<BlogPost />} />
+      <Route path="/blog/tags" element={<Tag />} /> 
+      <Route path="/blog/tags/:tag" element={<TagPage />} /> 
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </Router>,
   document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

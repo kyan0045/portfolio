@@ -66,3 +66,17 @@ body {
   animation: fadeIn 3s ease-in-out;
 }
 
+/* Custom styles for Markdown content */
+.prose {
+  @apply max-w-none;
+}
+
+.prose h1 {
+  @apply text-3xl font-bold;
+}
+
+.prose p {
+  @apply my-4;
+}
+
+/* Add more styles as needed */
