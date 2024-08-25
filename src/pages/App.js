@@ -77,7 +77,7 @@ const Hero = ({ projectsRef, contactRef }) => {
         </h2>
         <p className="text-lg mb-4 text-gray-300 fade-in-05s">
           Backend developer with a passion for building scalable and efficient
-          applications. Proficient in NodeJS & C++. Specializing in applications
+          applications. Proficient in <span className="font-bold text-teal-200">NodeJS & C++</span>. Specializing in applications
           like Discord/Telegram (self)bots and APIs.
         </p>
         <div>
