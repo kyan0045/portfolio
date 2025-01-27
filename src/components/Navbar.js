@@ -3,7 +3,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 const Navbar = () => {
     return (
-      <nav className="sticky top-0 flex items-center justify-between p-6 bg-gray-900">
+      <nav className="sticky top-0 flex items-center justify-between p-6 bg-gray-900 z-50">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <a
             href="../"

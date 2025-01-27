@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "../App.css";
@@ -63,6 +63,12 @@ const BlogPost = () => {
     const wordsPerMinute = 238;
     const readTime = Math.ceil(wordCount / wordsPerMinute);
     return `${readTime} min read`;
+  };
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Code copied to clipboard!");
+    });
   };
 
   if (error) {
@@ -142,14 +148,31 @@ const BlogPost = () => {
                   code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
                     return !inline && match ? (
-                      <SyntaxHighlighter
-                        style={okaidia}
-                        language={match[1]}
-                        PreTag="div"
-                        {...props}
-                      >
-                        {String(children).replace(/\n$/, "")}
-                      </SyntaxHighlighter>
+                      <div className="relative">
+                        <div className="code-header">
+                          <span className="filename">{match[1]}</span>
+                          <button
+                            className="copy-button"
+                            onClick={() => copyToClipboard(String(children))}
+                          >
+                            Copy
+                          </button>
+                        </div>
+                        <SyntaxHighlighter
+                          language={match[1]}
+                          style={vscDarkPlus}
+                          PreTag="div"
+                          {...props}
+                          customStyle={{
+                            backgroundColor: 'var(--code-bg)',
+                            padding: '1em',
+                            margin: '0',
+                            textShadow: 'none',  
+                          }}
+                        >
+                          {String(children).replace(/\n$/, "")}
+                        </SyntaxHighlighter>
+                      </div>
                     ) : (
                       <code className={className} {...props}>
                         {children}
