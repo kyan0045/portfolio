@@ -133,10 +133,10 @@ const About = () => {
         </div>
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
           <h3 className="text-2xl font-semibold mb-4 text-white">Skills</h3>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-2">
             <div className="flex flex-col items-center">
               <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" />
-              <span className="text-white font-bold mt-2">Node.js</span>
+              <span className="text-white font-bold mt-2">NodeJS</span>
             </div>
             <div className="flex flex-col items-center">
               <img src="https://skillicons.dev/icons?i=cpp" alt="C++" />
