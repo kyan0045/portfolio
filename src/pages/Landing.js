@@ -67,7 +67,7 @@ const Hero = ({ projectsRef, contactRef }) => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 font-medium">
                 NodeJS & C++
               </span>
-              . With a focus on applications like Discord/Telegram (self)bots,
+              . With a focus on automated programs like Discord/Telegram (self)bots,
               APIs and applications.
             </p>
             <div className="flex flex-wrap gap-4">
