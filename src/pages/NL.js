@@ -454,7 +454,7 @@ const MusicNL = ({ id }) => {
               {displayedArtists.map((item, index) => (
                 <div key={item.artist.id || index} className="music-artist-card flex flex-col items-center p-6 border border-neutral-200 rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
                   {/* Artist Rank */}
-                  <div className="absolute top-3 left-3 text-xs font-semibold text-neutral-500 bg-white bg-opacity-75 px-1.5 py-0.5 rounded">
+                  <div className="absolute top-3 left-3 text-xs font-semibold text-neutral-500 bg-white bg-opacity-75 px-0.5 py-0.5 rounded">
                     #{index + 1}
                   </div>
                   {item.artist.image && (

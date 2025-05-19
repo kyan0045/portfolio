@@ -3,28 +3,31 @@
 /* @tailwind components; */
 /* @tailwind utilities; */
 
+html {
+  height: 100%; 
+  overflow-x: hidden; 
+}
+
 body {
   background-color: #ffffff;
   color: #000000;
-  /* Consider adding a specific font here if you don't want to rely solely on Tailwind's default font-sans */
-  /* font-family: 'Inter', sans-serif; */
+  min-height: 100%; 
 }
 
-/* --- New Frame Corner L-Shapes --- */
 .frame-corner {
   position: fixed;
-  width: 28px;  /* Slightly smaller */
-  height: 28px; /* Slightly smaller */
-  border-color: #000000; /* Black */
+  width: 28px;  
+  height: 28px; 
+  border-color: #000000; 
   border-style: solid;
   z-index: 50;
-  transition: all 0.3s ease-in-out; /* Smooth transition for any future hover effects or changes */
+  transition: all 0.3s ease-in-out; 
 }
 
 .frame-corner.top-left {
-  top: 1.5rem; /* More inset */
-  left: 1.5rem; /* More inset */
-  border-width: 1.5px 0 0 1.5px; /* Thinner */
+  top: 1.5rem; 
+  left: 1.5rem; 
+  border-width: 1.5px 0 0 1.5px;
 }
 
 .frame-corner.top-right {
@@ -45,7 +48,6 @@ body {
   border-width: 0 1.5px 1.5px 0;
 }
 
-/* --- Minimalist Scrollbar --- */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -66,13 +68,6 @@ body {
   scrollbar-color: #000000 #ffffff; /* thumb track */
 }
 
-/* --- General Content Adjustments --- */
-/* Removed .page-wrapper-nl styling, padding will be on the main content div in NLPage */
-/* Removed .corner-l-shape (old ones) */
-/* Removed @keyframes float and .animate-float */
-/* Removed @keyframes gradient and .animate-gradient */
-
-/* Fade-in for sections (optional, can be removed if too much) */
 .fade-in-1s {
   animation: fadeInAnimation 1s ease-in-out;
 }
