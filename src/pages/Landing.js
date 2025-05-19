@@ -329,6 +329,30 @@ export default function App() {
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
+  React.useEffect(() => {
+    const userLang = navigator.language || navigator.userLanguage;
+    const isDutchUser = userLang.toLowerCase().startsWith('nl');
+
+    // Get the current path to avoid redirecting if already on the Dutch version
+    const currentPath = window.location.pathname;
+
+    // Use sessionStorage to ensure redirection happens only once per session,
+    // preventing potential redirect loops.
+    const hasAttemptedRedirect = sessionStorage.getItem('dutchRedirectAttempted');
+
+    if (isDutchUser && !currentPath.startsWith('/nl') && !hasAttemptedRedirect) {
+      sessionStorage.setItem('dutchRedirectAttempted', 'true');
+      // Redirect to your Dutch version.
+      // This assumes your Dutch page will be accessible at the '/nl' path.
+      // You'll need to set up your hosting or routing to serve the Dutch page at this path.
+      window.location.href = '/nl';
+
+      // Alternatively, if your Dutch page is a completely separate HTML file,
+      // you might redirect like this:
+      // window.location.href = '/index_nl.html';
+    }
+  }, []); // Empty dependency array ensures this runs once on mount
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <Navbar />

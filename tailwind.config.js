@@ -19,6 +19,9 @@ module.exports = {
           },
         },
       },
+      fontFamily: { // Added fontFamily
+        'dancing-script': ['"Dancing Script"', 'cursive'],
+      },
     },
   },
 };

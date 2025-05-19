@@ -1,0 +1,152 @@
+/* Ensure Tailwind base, components, utilities are imported, usually in your main CSS file (e.g., index.css or App.css) */
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+  /* Consider adding a specific font here if you don't want to rely solely on Tailwind's default font-sans */
+  /* font-family: 'Inter', sans-serif; */
+}
+
+/* --- New Frame Corner L-Shapes --- */
+.frame-corner {
+  position: fixed;
+  width: 28px;  /* Slightly smaller */
+  height: 28px; /* Slightly smaller */
+  border-color: #000000; /* Black */
+  border-style: solid;
+  z-index: 50;
+  transition: all 0.3s ease-in-out; /* Smooth transition for any future hover effects or changes */
+}
+
+.frame-corner.top-left {
+  top: 1.5rem; /* More inset */
+  left: 1.5rem; /* More inset */
+  border-width: 1.5px 0 0 1.5px; /* Thinner */
+}
+
+.frame-corner.top-right {
+  top: 1.5rem;
+  right: 1.5rem;
+  border-width: 1.5px 1.5px 0 0;
+}
+
+.frame-corner.bottom-left {
+  bottom: 1.5rem;
+  left: 1.5rem;
+  border-width: 0 0 1.5px 1.5px;
+}
+
+.frame-corner.bottom-right {
+  bottom: 1.5rem;
+  right: 1.5rem;
+  border-width: 0 1.5px 1.5px 0;
+}
+
+/* --- Minimalist Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff; /* White track */
+}
+::-webkit-scrollbar-thumb {
+  background: #000000; /* Black thumb */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333333; /* Darker gray on hover */
+}
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #000000 #ffffff; /* thumb track */
+}
+
+/* --- General Content Adjustments --- */
+/* Removed .page-wrapper-nl styling, padding will be on the main content div in NLPage */
+/* Removed .corner-l-shape (old ones) */
+/* Removed @keyframes float and .animate-float */
+/* Removed @keyframes gradient and .animate-gradient */
+
+/* Fade-in for sections (optional, can be removed if too much) */
+.fade-in-1s {
+  animation: fadeInAnimation 1s ease-in-out;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Music Section Styles --- */
+
+/* You'll need to find and import a handwriting font. 
+   For example, if you download "Caveat" from Google Fonts: */
+/* @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap'); */
+
+.font-handwriting-artist {
+  /* font-family: 'Caveat', cursive; */ /* Example: Apply the handwriting font */
+  /* For now, let's use the existing artistic font as a placeholder if Caveat isn't imported yet */
+  font-family: 'Dancing Script', cursive; /* Placeholder - ideally a different handwriting font */
+  font-weight: 700; /* Adjust weight as needed */
+}
+
+.music-artist-card {
+  background-color: #fff; /* Ensure it stands out if page bg changes */
+  position: relative; /* For potential pseudo-elements */
+}
+
+/* Optional: Decorative line for artist cards - subtle L-shape echo */
+.music-artist-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  border-top: 1.5px solid #000000;
+  border-left: 1.5px solid #000000;
+  opacity: 0.7;
+  transition: all 0.3s ease-in-out;
+}
+
+.music-artist-card:hover::before {
+  opacity: 1;
+  width: 25px; /* Slightly larger on hover */
+  height: 25px; /* Slightly larger on hover */
+}
+
+/* Styling for the Spotify Embed Container */
+.spotify-embed-container {
+  border: 1.5px solid #000000; /* Match frame corner style */
+  /* The iframe itself has borderRadius, but this ensures the container also looks sharp */
+}
+
+/* Hide frame corners on very small screens if they feel too intrusive */
+@media (max-width: 640px) { /* sm breakpoint */
+  .frame-corner {
+    width: 20px;
+    height: 20px;
+    top: 1rem;
+    left: 1rem;
+    /* Adjust right/bottom for those corners */
+  }
+  .frame-corner.top-right { left: auto; right: 1rem; }
+  .frame-corner.bottom-left { top: auto; bottom: 1rem; }
+  .frame-corner.bottom-right { top: auto; bottom: 1rem; left: auto; right: 1rem; }
+
+  /* Adjust main content padding if corners are hidden on mobile */
+  .main-content-wrapper { 
+    padding: 1.5rem !important; /* Example: p-6 */
+  }
+}
