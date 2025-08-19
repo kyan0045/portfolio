@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kyanbosman.com/sitemap.xml
+
+# Allow important files
+Allow: /favicon.ico
+Allow: /apple-touch-icon.png
+Allow: /android-chrome-192x192.png

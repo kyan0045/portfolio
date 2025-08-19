@@ -58,18 +58,33 @@ const NavbarNL = () => {
   const langPrefix = currentLang === "en" ? "/en" : "/nl";
 
   const navItems = [
-    { name: t("nav.home"), path: `${langPrefix}/over-mij` },
-    { name: t("nav.music"), path: `${langPrefix}/muziek` },
-    { name: t("nav.library"), path: `${langPrefix}/bibliotheek` },
-    { name: t("nav.photos"), path: `${langPrefix}/fotos` },
-    { name: t("nav.portfolio"), path: `${langPrefix}/portfolio` },
+    {
+      name: t("nav.home"),
+      path: currentLang === "en" ? "/en/about-me" : "/nl/over-mij",
+    },
+    {
+      name: t("nav.music"),
+      path: currentLang === "en" ? "/en/music" : "/nl/muziek",
+    },
+    {
+      name: t("nav.library"),
+      path: currentLang === "en" ? "/en/library" : "/nl/bibliotheek",
+    },
+    {
+      name: t("nav.photos"),
+      path: currentLang === "en" ? "/en/photos" : "/nl/fotos",
+    },
+    {
+      name: t("nav.portfolio"),
+      path: `${langPrefix}/portfolio`,
+    },
   ];
 
   const isHomePage =
     location.pathname === "/" ||
     location.pathname === "/over-mij" ||
     location.pathname === "/nl/over-mij" ||
-    location.pathname === "/en/over-mij";
+    location.pathname === "/en/about-me";
 
   // Scroll detection
   React.useEffect(() => {
@@ -302,7 +317,7 @@ root.render(
         </Routes>
       </Router>
     </LanguageProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
 // Helper component to ensure AppLayout is within Router context for useLocation
@@ -354,7 +369,8 @@ function AppWithLayout() {
 // Language redirect component
 const LanguageRedirect = () => {
   const { language } = useLanguage();
-  return <Navigate to={`/${language}/over-mij`} replace />;
+  const homePath = language === "en" ? "/en/about-me" : "/nl/over-mij";
+  return <Navigate to={homePath} replace />;
 };
 
 // Dutch routes
@@ -371,10 +387,10 @@ const DutchRoutes = () => (
 // English routes
 const EnglishRoutes = () => (
   <Routes>
-    <Route path="/over-mij" element={<OverMij />} />
-    <Route path="/muziek" element={<Muziek />} />
-    <Route path="/bibliotheek" element={<Bibliotheek />} />
-    <Route path="/fotos" element={<Fotos />} />
+    <Route path="/about-me" element={<OverMij />} />
+    <Route path="/music" element={<Muziek />} />
+    <Route path="/library" element={<Bibliotheek />} />
+    <Route path="/photos" element={<Fotos />} />
     <Route path="/portfolio" element={<Portfolio />} />
   </Routes>
 );
