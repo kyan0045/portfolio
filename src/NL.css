@@ -1,32 +1,31 @@
-/* Ensure Tailwind base, components, utilities are imported, usually in your main CSS file (e.g., index.css or App.css) */
 /* @tailwind base; */
 /* @tailwind components; */
 /* @tailwind utilities; */
 
 html {
-  height: 100%; 
-  overflow-x: hidden; 
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   background-color: #ffffff;
   color: #000000;
-  min-height: 100%; 
+  min-height: 100%;
 }
 
 .frame-corner {
   position: fixed;
-  width: 28px;  
-  height: 28px; 
-  border-color: #000000; 
+  width: 28px;
+  height: 28px;
+  border-color: #000000;
   border-style: solid;
   z-index: 50;
-  transition: all 0.3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
 }
 
 .frame-corner.top-left {
-  top: 1.5rem; 
-  left: 1.5rem; 
+  top: 1.5rem;
+  left: 1.5rem;
   border-width: 1.5px 0 0 1.5px;
 }
 
@@ -37,15 +36,33 @@ body {
 }
 
 .frame-corner.bottom-left {
+  position: fixed;
   bottom: 1.5rem;
   left: 1.5rem;
   border-width: 0 0 1.5px 1.5px;
 }
 
 .frame-corner.bottom-right {
+  position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   border-width: 0 1.5px 1.5px 0;
+}
+
+/* Animation for a subtle, continuous pulse */
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-subtle-pulse {
+  display: inline-block; /* Ensures transform is applied correctly */
+  animation: subtle-pulse 10s ease-in-out infinite;
 }
 
 ::-webkit-scrollbar {
@@ -83,27 +100,38 @@ body {
   }
 }
 
+/* --- Character Fade-in Animation --- */
+.fade-in-char {
+  display: inline-block; /* Required for transforms */
+  opacity: 0;
+  animation: fadeInCharAnimation 0.6s ease-out forwards;
+}
+
+@keyframes fadeInCharAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* --- Music Section Styles --- */
 
-/* You'll need to find and import a handwriting font. 
-   For example, if you download "Caveat" from Google Fonts: */
-/* @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap'); */
-
 .font-handwriting-artist {
-  /* font-family: 'Caveat', cursive; */ /* Example: Apply the handwriting font */
-  /* For now, let's use the existing artistic font as a placeholder if Caveat isn't imported yet */
-  font-family: 'Dancing Script', cursive; /* Placeholder - ideally a different handwriting font */
-  font-weight: 700; /* Adjust weight as needed */
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
 }
 
 .music-artist-card {
-  background-color: #fff; /* Ensure it stands out if page bg changes */
-  position: relative; /* For potential pseudo-elements */
+  background-color: #fff;
+  position: relative;
 }
 
-/* Optional: Decorative line for artist cards - subtle L-shape echo */
 .music-artist-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 10px;
   left: 10px;
@@ -128,7 +156,8 @@ body {
 }
 
 /* Hide frame corners on very small screens if they feel too intrusive */
-@media (max-width: 640px) { /* sm breakpoint */
+@media (max-width: 640px) {
+  /* sm breakpoint */
   .frame-corner {
     width: 20px;
     height: 20px;
@@ -136,12 +165,23 @@ body {
     left: 1rem;
     /* Adjust right/bottom for those corners */
   }
-  .frame-corner.top-right { left: auto; right: 1rem; }
-  .frame-corner.bottom-left { top: auto; bottom: 1rem; }
-  .frame-corner.bottom-right { top: auto; bottom: 1rem; left: auto; right: 1rem; }
+  .frame-corner.top-right {
+    left: auto;
+    right: 1rem;
+  }
+  .frame-corner.bottom-left {
+    top: auto;
+    bottom: 1rem;
+  }
+  .frame-corner.bottom-right {
+    top: auto;
+    bottom: 1rem;
+    left: auto;
+    right: 1rem;
+  }
 
   /* Adjust main content padding if corners are hidden on mobile */
-  .main-content-wrapper { 
+  .main-content-wrapper {
     padding: 1.5rem !important; /* Example: p-6 */
   }
 }

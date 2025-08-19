@@ -1,58 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="nl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#2dd4bf" />
-    
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- Language Alternatives for SEO -->
+    <link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/" />
+    <link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://kyanbosman.com/" />
+
     <!-- Primary Meta Tags -->
-    <title>Kyan Bosman - Portfolio</title>
+    <title>Kyan Bosman</title>
     <meta name="title" content="Kyan Bosman" />
-    <meta name="description" content="Backend developer from the Netherlands specializing in NodeJS & C++. Explore my projects and development services focused on scalable applications and automation solutions." />
-    <meta name="keywords" content="Kyan Bosman, Backend Developer, NodeJS, C++, Discord Bots, API Development, Netherlands Developer, Portfolio" />
+    <meta
+      name="description"
+      content="Experienced backend developer from the Netherlands specializing in NodeJS and scalable web applications. View my portfolio of Discord bots, APIs, and automation solutions."
+    />
+    <meta
+      name="keywords"
+      content="Kyan Bosman, Backend Developer, NodeJS Developer, TensorFlow, Discord Bot Development, API Development, Web Developer Netherlands, Portfolio, Automation Solutions"
+    />
     <meta name="author" content="Kyan Bosman" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kyanbosman.com/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://kyan.space/" />
-    <meta property="og:title" content="Kyan Bosman - Developer Portfolio" />
-    <meta property="og:description" content="Backend developer from the Netherlands specializing in NodeJS & C++. Explore my projects and development services." />
-    <meta property="og:image" content="https://kyan.space/pfp.jpg" />
+    <meta property="og:url" content="https://kyanbosman.com/" />
+    <meta property="og:title" content="Kyan Bosman - Backend Developer" />
+    <meta
+      property="og:description"
+      content="Experienced backend developer specializing in NodeJS and scalable applications. Explore my development projects and services."
+    />
+    <meta property="og:image" content="https://kyanbosman.com/pfp.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Kyan Bosman Portfolio" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:locale:alternate" content="en_US" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://kyan.space/" />
-    <meta property="twitter:title" content="Kyan Bosman - Developer Portfolio" />
-    <meta property="twitter:description" content="Backend developer from the Netherlands specializing in NodeJS & C++. Explore my projects and development services." />
-    <meta property="twitter:image" content="https://kyan.space/pfp.jpg" />
+    <meta property="twitter:url" content="https://kyanbosman.com/" />
+    <meta property="twitter:title" content="Kyan Bosman - Backend Developer" />
+    <meta
+      property="twitter:description"
+      content="Experienced backend developer specializing in NodeJS and scalable applications."
+    />
+    <meta property="twitter:image" content="https://kyanbosman.com/pfp.jpg" />
+    <meta property="twitter:creator" content="@kyan0045" />
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/manifest.json" />
-    
+
     <!-- Preloading -->
     <link rel="preload" href="/pfp.jpg" as="image" />
     <link rel="preload" href="/pfp-dark.jpg" as="image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://skillicons.dev" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZHX69GJCY"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5ZHX69GJCY"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-5ZHX69GJCY');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-5ZHX69GJCY");
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Kyan Bosman",
+        "jobTitle": "Backend Developer",
+        "description": "Backend developer from the Netherlands specializing in NodeJS, TensorFlow, and scalable web applications",
+        "url": "https://kyanbosman.com",
+        "image": "https://kyanbosman.com/pfp.jpg",
+        "email": "mailto:contact@kyanbosman.com",
+        "sameAs": ["https://github.com/kyan0045"],
+        "knowsAbout": [
+          "NodeJS",
+          "TensorFlow",
+          "Backend Development",
+          "API Development",
+          "Discord Bot Development",
+          "Web Development",
+          "JavaScript",
+          "Python"
+        ],
+        "nationality": {
+          "@type": "Country",
+          "name": "Netherlands"
+        }
+      }
     </script>
   </head>
   <body>
     <noscript>
-      <div style="text-align: center; padding: 20px; font-family: system-ui;">
-        Please enable JavaScript to view this portfolio.
+      <div style="text-align: center; padding: 20px; font-family: system-ui">
+        Please enable JavaScript to view this website.
       </div>
     </noscript>
     <div id="root"></div>

@@ -1,0 +1,42 @@
+[
+  {
+    "type": "Series",
+    "title": "Maid",
+    "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/series-maid-INe61oh0d5J6aVoIaCwt6DEBq4ZX6G.jpg",
+    "finishedDate": "15-07-2025",
+    "rating": 5,
+    "review": "Erg intrigerende serie die blootlegt hoe moeilijk het kan zijn om uit een gewelddadige relatie te stappen."
+  },
+  {
+    "type": "Series",
+    "title": "The Sandman",
+    "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/series-the-sandman-K4MsWxiJ2X0AwRJSSpyV1fHAx7iSRX.jpg",
+    "finishedDate": "31-07-2025",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Painkiller",
+    "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/series-painkiller-4iG7mYVxGmIi8ZcF9iN5Qe700YvZfY.jpg",
+    "finishedDate": "10-08-2024",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Film",
+    "title": "The Life List",
+    "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/MV5BMjNhNzUyMTQtYTFiZS00NzM2LWI3YTgtZmI1ZTA1MDUzMzBhXkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg",
+    "finishedDate": "02-08-2025",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series", 
+    "title": "Untamed", 
+    "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/Untamed_%28miniseries%29.jpg",
+    "finishedDate": "05-08-2025",
+    "rating": 4.5,
+    "review": ""
+  }
+]
