@@ -1,6 +1,28 @@
 User-agent: *
 Allow: /
 
+# Block AI info page from public search engines only
+User-agent: Googlebot
+Disallow: /ai-info.html
+
+User-agent: Bingbot
+Disallow: /ai-info.html
+
+User-agent: Slurp
+Disallow: /ai-info.html
+
+User-agent: DuckDuckBot
+Disallow: /ai-info.html
+
+User-agent: Baiduspider
+Disallow: /ai-info.html
+
+User-agent: YandexBot
+Disallow: /ai-info.html
+
+# All other crawlers (AI companies, research, etc.) are allowed by default
+# This includes: OpenAI, Anthropic, DeepSeek, Meta AI, and any future AI companies
+
 # Sitemap
 Sitemap: https://kyanbosman.com/sitemap.xml
 
