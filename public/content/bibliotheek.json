@@ -36,7 +36,31 @@
     "title": "Untamed", 
     "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/Untamed_%28miniseries%29.jpg",
     "finishedDate": "05-08-2025",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Wednesday",
+    "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/ems.jpeg",
+    "finishedDate": "05-09-2025",
     "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "House of Guinness",
+    "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/MV5BM2IzZDg0ODYtYWUyZi00YmJmLWE2N2MtMmRmNjAzMWRiYTAzXkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg",
+    "finishedDate": "29-09-2025",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Film",
+    "title": "Ocean",
+    "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/MV5BN2I2ZjI0YWItM2I3My00NGE3LTk5ZDgtM2M2MWY2ZjFlNmNiXkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg",
+    "finishedDate": "30-09-2025",
+    "rating": 5,
     "review": ""
   }
 ]
