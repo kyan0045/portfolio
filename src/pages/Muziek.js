@@ -71,7 +71,7 @@ const MusicNL = () => {
         const startOfDay = new Date(
           now.getFullYear(),
           now.getMonth(),
-          now.getDate(),
+          now.getDate()
         );
         const endOfDay = new Date(
           now.getFullYear(),
@@ -80,7 +80,7 @@ const MusicNL = () => {
           23,
           59,
           59,
-          999,
+          999
         );
         return `${baseUrl}/${endpoint}?after=${startOfDay.getTime()}&before=${endOfDay.getTime()}&timeZone=${timeZone}${limitParam}`;
       }
@@ -91,7 +91,7 @@ const MusicNL = () => {
         const startOfWeek = new Date(
           now.getFullYear(),
           now.getMonth(),
-          now.getDate() + mondayOffset,
+          now.getDate() + mondayOffset
         );
         startOfWeek.setHours(0, 0, 0, 0);
         const endOfWeek = new Date(startOfWeek);
@@ -294,7 +294,7 @@ const MusicNL = () => {
             if (timeRemaining > 0) {
               songEndTimeoutRef.current = setTimeout(
                 () => fetchTrackData(true),
-                timeRemaining + 1000,
+                timeRemaining + 1000
               );
             }
             if (wasInitialLoad) setLoadingCurrentTrack(false);
@@ -302,7 +302,7 @@ const MusicNL = () => {
           }
         } else if (currentResponse.status !== 204) {
           console.warn(
-            `Current track API non-OK status: ${currentResponse.status}`,
+            `Current track API non-OK status: ${currentResponse.status}`
           );
         }
 
@@ -323,7 +323,7 @@ const MusicNL = () => {
           }
         } else {
           console.warn(
-            `Recent track API non-OK status: ${recentResponse.status}`,
+            `Recent track API non-OK status: ${recentResponse.status}`
           );
           setCurrentTrack(null);
         }
@@ -341,7 +341,7 @@ const MusicNL = () => {
     fetchTrackData();
     periodicFetchIntervalRef.current = setInterval(
       () => fetchTrackData(true),
-      30000,
+      30000
     );
 
     return () => {
@@ -462,7 +462,7 @@ const MusicNL = () => {
                         {t("music.listenedOn")}{" "}
                         {new Date(currentTrack.endTime).toLocaleDateString(
                           "nl-NL",
-                          { hour: "2-digit", minute: "2-digit" },
+                          { hour: "2-digit", minute: "2-digit" }
                         )}
                       </p>
                     )}
@@ -577,7 +577,7 @@ const MusicNL = () => {
                   {formatTotalPlayedTime(
                     statsData?.playedMs?.sum ||
                       statsData?.items?.playedMs?.sum ||
-                      0,
+                      0
                   )}
                 </p>
                 <p className="text-sm text-neutral-600">
@@ -729,7 +729,7 @@ const MusicNL = () => {
                       ? `${t("music.showMore")} (9)`
                       : `${t("music.showAll")} (${Math.min(
                           currentData.length,
-                          50,
+                          50
                         )})`}
                   </button>
                 )}

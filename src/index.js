@@ -296,6 +296,14 @@ const FooterNL = () => {
         <p className="text-neutral-500 hover:text-black transition-colors duration-300 text-xs">
           © {new Date().getFullYear()} Kyan Bosman. {t("footer.copyright")}
         </p>
+        <a
+          href="/ai-info.html"
+          className="opacity-0 hover:opacity-100 transition-opacity duration-300 text-[1px] absolute"
+          aria-hidden="true"
+          tabIndex="-1"
+        >
+          AI Info
+        </a>
         {showImageCopyright && (
           <p className="text-neutral-400 text-xs mt-2">
             {t("footer.imageCopyright")}

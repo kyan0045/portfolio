@@ -6,7 +6,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/over-mij"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/about-me"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://kyanbosman.com/"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -16,7 +16,7 @@
     <loc>https://kyanbosman.com/nl/over-mij</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/over-mij"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/about-me"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -25,7 +25,7 @@
     <loc>https://kyanbosman.com/nl/muziek</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/muziek"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/music"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -34,7 +34,7 @@
     <loc>https://kyanbosman.com/nl/bibliotheek</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/bibliotheek"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/library"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -43,7 +43,7 @@
     <loc>https://kyanbosman.com/nl/fotos</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/fotos"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/photos"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -52,7 +52,7 @@
     <loc>https://kyanbosman.com/nl/portfolio</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/portfolio"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/portfolio"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -62,7 +62,7 @@
     <loc>https://kyanbosman.com/en/about-me</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/over-mij"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/about-me"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -71,7 +71,7 @@
     <loc>https://kyanbosman.com/en/music</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/muziek"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/music"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -80,7 +80,7 @@
     <loc>https://kyanbosman.com/en/library</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/bibliotheek"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/library"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -89,7 +89,7 @@
     <loc>https://kyanbosman.com/en/photos</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/fotos"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/photos"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -98,8 +98,15 @@
     <loc>https://kyanbosman.com/en/portfolio</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kyanbosman.com/nl/portfolio"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kyanbosman.com/en/portfolio"/>
-    <lastmod>2025-08-20</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- AI Info Page -->
+  <url>
+    <loc>https://kyanbosman.com/ai-info.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.1</priority>
   </url>
 </urlset>
