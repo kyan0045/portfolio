@@ -45,7 +45,7 @@ const Fotos = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-24 py-10 md:py-16">
+    <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-24 pt-32 pb-10 md:py-16">
       <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-black font-dancing-script text-center">
         {t("photos.title")}
       </h1>

@@ -110,7 +110,7 @@ const NavbarNL = () => {
         >
           <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-24 relative">
             {/* Logo/naam links - klikbaar naar homepage, met ruimte voor de frame-corner */}
-            <div className="absolute left-10 top-1/2 -translate-y-1/2 z-10">
+            <div className="relative md:absolute md:left-10 md:top-1/2 md:-translate-y-1/2 z-10 text-center md:text-left mb-2 md:mb-0">
               <Link
                 to="/"
                 className="font-dancing-script text-xl md:text-2xl text-black hover:text-neutral-600 transition-colors duration-300"

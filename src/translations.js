@@ -14,10 +14,10 @@ export const translations = {
     // Home/About page
     about: {
       title: "Over Mij",
-      content: "Hoi! Ik ben Kyan Bosman en ik ben ",
+      content: "👋! Ik ben Kyan Bosman en ik ben ",
       ageText: " jaar oud.",
       restOfContent:
-        "Als je dit leest heb je mijn website bereikt, hoe je hier gekomen bent? Dat is mij een raadsel... Maar goed, als je wat over mij wilt weten, dan is dit natuurlijk een goed begin! Op deze site staan wat dingen over de muziek die ik luister en de (digitale) content die ik opslok (tenminste, mits ik deze heb toegevoegd...): series, films, boeken, maar ook poëzie :D",
+        "Als je dit leest heb je mijn website bereikt, hoe je hier gekomen bent? Dat is mij een raadsel... Maar goed, als je mij per se wilt stalken, dan is dit natuurlijk een goed begin! Op deze site staan wat dingen over de muziek die ik luister en de (digitale) content die ik opslok (tenminste, mits ik deze heb toegevoegd...): series, films, boeken, maar ook misschien wel poëzie :D",
     },
 
     // Music page
@@ -61,6 +61,7 @@ export const translations = {
     }, // Library page
     library: {
       title: "Bibliotheek",
+      archive: "Archief",
       tabs: {
         series: "Series & Films",
         books: "Boeken",
@@ -77,6 +78,7 @@ export const translations = {
         series: "Afgerond op",
         film: "Gezien op",
         book: "Gelezen op",
+        unknown: "Datum onbekend",
       },
     },
 
@@ -91,8 +93,7 @@ export const translations = {
     // Portfolio page
     portfolio: {
       title: "Portfolio",
-      subtitle:
-        "Een overzicht van mijn creatieve projecten - van websites en code tot gedichten en designs.",
+      subtitle: "Een overzicht van sommige van mijn openbare projecten",
       categories: {
         all: "Alles",
         websites: "Websites",
@@ -119,9 +120,9 @@ export const translations = {
       emptyState: "Geen creaties gevonden in deze categorie.",
       emptyStateSubtext:
         "Probeer een andere categorie of kom later terug voor nieuwe projecten.",
-      comingSoon: "Meer komt eraan...",
+      comingSoon: "Er komt meer aan...",
       comingSoonText:
-        "Ik werk altijd aan nieuwe projecten. Check regelmatig terug voor updates!",
+        "Ik werk altijd aan nieuwe projecten. Check regelmatig terug voor updates... of niet! :D",
     },
 
     // Common
@@ -153,10 +154,10 @@ export const translations = {
     // Home/About page
     about: {
       title: "About Me",
-      content: "Hi! I am Kyan Bosman and I am ",
+      content: "Hiya 👋! I am Kyan Bosman and I am ",
       ageText: " years old.",
       restOfContent:
-        "If you're reading this, you've reached my website. How you got here? That's a mystery to me... But anyway, if you want to know something about me, this is naturally a good start! On this site you'll find things about the music I listen to and the (digital) content I consume: series, films, books, but also poetry :D",
+        "If you're reading this, you've reached my website. How you got here? That's a mystery to me... But anyway, if you must stalk me, this is kind of a good start! On this site you'll find some things about the music I listen to and the (digital) content I consume: series, films, books, but perhaps also poetry :D",
     },
 
     // Music page
@@ -199,9 +200,9 @@ export const translations = {
       },
     },
 
-    // Library page
     library: {
       title: "Library",
+      archive: "Archive",
       tabs: {
         series: "Series & Films",
         books: "Books",
@@ -218,6 +219,7 @@ export const translations = {
         series: "Finished on",
         film: "Watched on",
         book: "Read on",
+        unknown: "Date unknown",
       },
     },
 
@@ -232,8 +234,7 @@ export const translations = {
     // Portfolio page
     portfolio: {
       title: "Portfolio",
-      subtitle:
-        "An overview of my creative projects - from websites and code to poems and designs.",
+      subtitle: "An overview of some of my public projects.",
       categories: {
         all: "All",
         websites: "Websites",
@@ -262,7 +263,7 @@ export const translations = {
         "Try a different category or come back later for new projects.",
       comingSoon: "More coming soon...",
       comingSoonText:
-        "I'm always working on new projects. Check back regularly for updates!",
+        "I'm always working on new projects. Check back regularly for updates... or don't :D",
     },
 
     // Common

@@ -397,7 +397,7 @@ const MusicNL = () => {
   }
 
   return (
-    <section id="muziek" className="py-16 fade-in-1s">
+    <section id="muziek" className="pt-32 pb-16 md:py-16 fade-in-1s">
       <div className="mx-auto max-w-5xl text-center">
         <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-black font-dancing-script">
           {t("music.title")}

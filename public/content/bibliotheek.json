@@ -1,6 +1,30 @@
 [
   {
     "type": "Series",
+    "title": "Kaos",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/dDBTUSl3tRsOeKC1jZugBSFHy9I.jpg",
+    "finishedDate": "10-09-2024",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Cunk on Earth",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/dK4KE5f4OcMzGncknEkFveTfGlv.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Inside",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/ku1UvTWYvhFQbSesOD6zteY7bXT.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
     "title": "Maid",
     "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/series-maid-INe61oh0d5J6aVoIaCwt6DEBq4ZX6G.jpg",
     "finishedDate": "15-07-2025",
@@ -32,8 +56,8 @@
     "review": ""
   },
   {
-    "type": "Series", 
-    "title": "Untamed", 
+    "type": "Series",
+    "title": "Untamed",
     "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/Untamed_%28miniseries%29.jpg",
     "finishedDate": "05-08-2025",
     "rating": 4,
@@ -61,6 +85,374 @@
     "coverUrl": "https://sautqtvgrek5crhl.public.blob.vercel-storage.com/covers/MV5BN2I2ZjI0YWItM2I3My00NGE3LTk5ZDgtM2M2MWY2ZjFlNmNiXkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg",
     "finishedDate": "30-09-2025",
     "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Boots",
+    "coverUrl": "https://image.tmdb.org/t/p/original/1ZPInAS9ED6BLskqrDQWuw0Mzo2.jpg",
+    "finishedDate": "30-10-2025",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "A Man On the Inside",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/c09XdTLpLku2tqHt158NZBgC4hi.jpg",
+    "finishedDate": "20-11-2025",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Fall of the House of Usher",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/2rl04pRCaGfz91lwfWdDQmOiGJp.jpg",
+    "finishedDate": "10-02-2025",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Anne Rice's Interview with the Vampire",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/2162lAT2MP36MyJd2sttmj5du5T.jpg",
+    "finishedDate": "05-12-2025",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Anne Rice's Mayfair Witches",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/eDl1veju2Hf3tyFmGAedtGXb9Yv.jpg",
+    "finishedDate": "11-12-2025",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Anne Rice's Talamasca: The Secret Order",
+    "coverUrl": "https://image.tmdb.org/t/p/original/rJPYwP988HYDikkMC9kjwYs98Mb.jpg",
+    "finishedDate": "13-12-2025",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Lockwood & Co.",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/lxWSGo8D6MbFbQmM9tqhbaG80TP.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Shadow and Bone",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/mS9O9mjPlwpLTne4JgQlDkgREWA.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Warrior Nun",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/fLP0mA7FiERZhDP1NJUaHpm6XM8.jpg",
+    "finishedDate": "",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Half Bad: The Bastard Son & The Devil Himself",
+    "coverUrl": "https://image.tmdb.org/t/p/original/gllP1oK9QKL9kCnSUMu9E3nsu0y.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Daybreak",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/AbnOGmAe7harXNwRAz7XywpHr8F.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Good Girls",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/wpgg6G3UHXepH2Zgpt4W60d6gxR.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Florida Man",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/bn4qHIxbmZOC4AqlDUbgcKYld7r.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Order",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/yMPjmuSd5Fac8YMNOwofGALQWjR.jpg",
+    "finishedDate": "",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Locke & Key",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/zuxGfRKziGHPogipnEXXykdDmyT.jpg",
+    "finishedDate": "",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Ghosts",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/8yBQYa6AdvMY5H9CiAv0HkvF3UE.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Haunting of Bly Manor",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/whyzFPraQH9OrHt9jKxvBA1ezNI.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Haunting of Hill House",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/38PkhBGRQtmVx2drvPik3F42qHO.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Diplomat",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/cOKXV0FalCYixNmZYCfHXgyQ0VX.jpg",
+    "finishedDate": "",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Space Force",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/zgu3p4NvisS8CI68cUfBKbvAvu8.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Umbrella Academy",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/qhcwrnnCnN8NE1N6XXKHFmveJR9.jpg",
+    "finishedDate": "",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Residence",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/cJZbg425I9LF3SlJVQDOg4nJEvq.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Night Agent",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/4c5yUNcaff4W4aPrkXE6zr7papX.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Recruit",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/mLbFg0u2DPYuB5CILzwWk3kdI8b.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Santa Clarita Diet",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/5rBjNm2sRubaXKBnU904NInFi7P.jpg",
+    "finishedDate": "",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Queen Charlotte: A Bridgerton Story",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/eR7btjpvOugivUYSoEsD2iAOYsJ.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Seven Deadly Sins",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/gxTojpKEOtue85EEFlozwRbDXwJ.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Film",
+    "title": "Texas Chainsaw Massacre",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/7sKiGNWFM15WNyY7LYd5vmb3brO.jpg",
+    "finishedDate": "",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Suits",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/vQiryp6LioFxQThywxbC6TuoDjy.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Breaking Bad",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Man from Toronto",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/uTCfTibqtk4f90cC59bLPMOmsfc.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Teenage Bounty Hunters",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/gFtJaWcLAJJsSzfuWcLSeAS8aVl.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Brooklyn Nine-Nine",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/A3SymGlOHefSKbz1bCOz56moupS.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Film",
+    "title": "Day Shift",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/tkl7n5r542S40hnYDI27lGNCACu.jpg",
+    "finishedDate": "",
+    "rating": 4,
+    "review": ""
+  },
+  {
+    "type": "Film",
+    "title": "The Old Guard",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/cjr4NWURcVN3gW5FlHeabgBHLrY.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "One Piece",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/lXl3ZbY5TksOdt6eYgdyg6vsnFW.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Harlan Coben's Fool Me Once",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/Ertv4WLEyHgi8zN4ldOKgPcGAZ.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Film",
+    "title": "Oppenheimer",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Treason",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/qOitarv5B5ydsScN3dkJPipYPg3.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "A Discovery of Witches",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/l7MUpFAE8UEWYnO2Uv7SFtdZ2OJ.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Film",
+    "title": "The Old Guard 2",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/wqfu3bPLJaEWJVk3QOm0rKhxf1A.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Resident Alien",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/5van3ktOTqWr5lcixh5aR8NlqqW.jpg",
+    "finishedDate": "",
+    "rating": 4.5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "Lucifer",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/ekZobS8isE6mA53RAiGDG93hBxL.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "The Good Place",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/qIhsuhoIYR5yTnDta0IL4senbeN.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Film",
+    "title": "Frankenstein",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/g4JtvGlQO7DByTI6frUobqvSL3R.jpg",
+    "finishedDate": "",
+    "rating": 5,
+    "review": ""
+  },
+  {
+    "type": "Series",
+    "title": "You",
+    "coverUrl": "https://www.themoviedb.org/t/p/w600_and_h900_face/oANi0vEE92nuijiZQgPZ88FSxqQ.jpg",
+    "finishedDate": "",
+    "rating": 3.5,
     "review": ""
   }
 ]

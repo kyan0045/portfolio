@@ -3,6 +3,7 @@ import { useTranslation } from "../translations";
 
 // Helper function to parse dd-mm-yyyy format
 const parseDate = (dateString) => {
+  if (!dateString) return null;
   const [day, month, year] = dateString.split("-").map(Number);
   return new Date(year, month - 1, day);
 };
@@ -98,27 +99,51 @@ const Bibliotheek = () => {
         }
       })
       .catch((error) =>
-        console.error("Error fetching bibliotheek data:", error),
+        console.error("Error fetching bibliotheek data:", error)
       );
   }, []);
 
-  // First filter by active tab, then sort
+  // First filter by active tab, then split into dated and undated, then sort
   const getFilteredItems = () => {
     let filtered = items;
 
     if (activeTab === "series") {
       filtered = items.filter(
-        (item) => item.type === "Series" || item.type === "Film",
+        (item) => item.type === "Series" || item.type === "Film"
       );
     } else if (activeTab === "boeken") {
       filtered = items.filter((item) => item.type === "Book");
     } else if (activeTab === "poezie") {
       filtered = items.filter((item) => item.type === "Poetry");
     }
+    return filtered;
+  };
 
-    return filtered.sort((a, b) => {
+  const filteredItems = getFilteredItems();
+
+  // Only split if sorting by date
+  const shouldSplit = sortType === "finishedDate";
+
+  const datedItems = shouldSplit
+    ? filteredItems.filter((item) => item.finishedDate)
+    : filteredItems;
+  const undatedItems = shouldSplit
+    ? filteredItems.filter((item) => !item.finishedDate)
+    : [];
+
+  const sortItems = (itemsToSort, isUndated = false) => {
+    return [...itemsToSort].sort((a, b) => {
       if (sortType === "finishedDate") {
-        return parseDate(b.finishedDate) - parseDate(a.finishedDate);
+        if (isUndated) return a.title.localeCompare(b.title);
+        // Handle case where finishedDate might be missing if we are in the "shouldSplit=false" path but somehow got here?
+        // Actually if sortType is finishedDate, we ARE splitting.
+        // But just to be safe in logic:
+        const dateA = parseDate(a.finishedDate);
+        const dateB = parseDate(b.finishedDate);
+        if (!dateA && !dateB) return 0;
+        if (!dateA) return 1;
+        if (!dateB) return -1;
+        return dateB - dateA;
       }
       if (sortType === "rating") {
         return b.rating - a.rating;
@@ -130,7 +155,8 @@ const Bibliotheek = () => {
     });
   };
 
-  const filteredAndSortedItems = getFilteredItems();
+  const mainItems = sortItems(datedItems);
+  const archiveItems = sortItems(undatedItems, true);
 
   const openModal = (item) => setSelectedItem(item);
   const closeModal = () => setSelectedItem(null);
@@ -148,8 +174,35 @@ const Bibliotheek = () => {
     </button>
   );
 
+  const renderGrid = (itemsToRender) => (
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+      {itemsToRender.map((item) => (
+        <div
+          key={item.title}
+          className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:-translate-y-2 transition-transform duration-300"
+          onClick={() => openModal(item)}
+        >
+          <img
+            src={item.coverUrl}
+            alt={`Cover for ${item.title}`}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <h3 className="font-bold text-md truncate">{item.title}</h3>
+              <p className="text-sm text-neutral-300 truncate">{item.author}</p>
+              <div className="mt-2">
+                <StarRating rating={item.rating} />
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
-    <section id="bibliotheek" className="py-16 fade-in-1s">
+    <section id="bibliotheek" className="pt-32 pb-16 md:py-16 fade-in-1s">
       <div className="mx-auto max-w-5xl text-center">
         <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-black font-dancing-script">
           {t("library.title")}
@@ -178,32 +231,16 @@ const Bibliotheek = () => {
           </select>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          {filteredAndSortedItems.map((item) => (
-            <div
-              key={item.title}
-              className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:-translate-y-2 transition-transform duration-300"
-              onClick={() => openModal(item)}
-            >
-              <img
-                src={item.coverUrl}
-                alt={`Cover for ${item.title}`}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 className="font-bold text-md truncate">{item.title}</h3>
-                  <p className="text-sm text-neutral-300 truncate">
-                    {item.author}
-                  </p>
-                  <div className="mt-2">
-                    <StarRating rating={item.rating} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {renderGrid(mainItems)}
+
+        {archiveItems.length > 0 && (
+          <div className="mt-16">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-black font-dancing-script">
+              {t("library.archive") || "Archief"}
+            </h2>
+            {renderGrid(archiveItems)}
+          </div>
+        )}
 
         {selectedItem && (
           <div
@@ -258,19 +295,25 @@ const Bibliotheek = () => {
                       </span>
                     </div>
                     <p className="text-neutral-500 text-sm mb-4 text-center">
-                      {selectedItem.type === "Series"
-                        ? t("library.finished.series")
-                        : selectedItem.type === "Film"
-                          ? t("library.finished.film")
-                          : t("library.finished.book")}
-                      :{" "}
-                      {new Date(
-                        parseDate(selectedItem.finishedDate),
-                      ).toLocaleDateString("nl-NL", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
+                      {selectedItem.finishedDate ? (
+                        <>
+                          {selectedItem.type === "Series"
+                            ? t("library.finished.series")
+                            : selectedItem.type === "Film"
+                              ? t("library.finished.film")
+                              : t("library.finished.book")}
+                          :{" "}
+                          {new Date(
+                            parseDate(selectedItem.finishedDate)
+                          ).toLocaleDateString("nl-NL", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })}
+                        </>
+                      ) : (
+                        t("library.finished.unknown") || "Datum onbekend"
+                      )}
                     </p>
                     <p className="text-neutral-700 leading-relaxed flex-grow">
                       {selectedItem.review}
@@ -344,19 +387,25 @@ const Bibliotheek = () => {
                   </div>
 
                   <p className="text-neutral-300 text-sm drop-shadow">
-                    {selectedItem.type === "Series"
-                      ? t("library.finished.series")
-                      : selectedItem.type === "Film"
-                        ? t("library.finished.film")
-                        : t("library.finished.book")}
-                    :{" "}
-                    {new Date(
-                      parseDate(selectedItem.finishedDate),
-                    ).toLocaleDateString("nl-NL", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
+                    {selectedItem.finishedDate ? (
+                      <>
+                        {selectedItem.type === "Series"
+                          ? t("library.finished.series")
+                          : selectedItem.type === "Film"
+                            ? t("library.finished.film")
+                            : t("library.finished.book")}
+                        :{" "}
+                        {new Date(
+                          parseDate(selectedItem.finishedDate)
+                        ).toLocaleDateString("nl-NL", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </>
+                    ) : (
+                      t("library.finished.unknown") || "Datum onbekend"
+                    )}
                   </p>
                 </div>
 

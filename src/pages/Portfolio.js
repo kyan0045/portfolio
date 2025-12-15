@@ -176,7 +176,7 @@ const Portfolio = () => {
   );
 
   return (
-    <section className="py-16 fade-in-1s">
+    <section className="pt-32 pb-16 md:py-16 fade-in-1s">
       <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-24">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-black font-dancing-script">

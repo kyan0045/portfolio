@@ -34,20 +34,25 @@ const LanguageToggle = () => {
     setLanguage(newLanguage);
 
     const currentPath = location.pathname;
-    
+
     // Handle root path or paths without language prefix
-    if (currentPath === "/" || (!currentPath.startsWith("/nl") && !currentPath.startsWith("/en"))) {
+    if (
+      currentPath === "/" ||
+      (!currentPath.startsWith("/nl") && !currentPath.startsWith("/en"))
+    ) {
       const defaultPath = newLanguage === "nl" ? "/over-mij" : "/about-me";
       navigate(`/${newLanguage}${defaultPath}`);
       return;
     }
-    
-    const pathWithoutLang = currentPath.replace(/^\/(nl|en)/, "") || (newLanguage === "nl" ? "/over-mij" : "/about-me");
-    
+
+    const pathWithoutLang =
+      currentPath.replace(/^\/(nl|en)/, "") ||
+      (newLanguage === "nl" ? "/over-mij" : "/about-me");
+
     // Get the appropriate URL mapping based on current and target language
     const urlMapping = getUrlMapping(currentLanguage, newLanguage);
     const mappedPath = urlMapping[pathWithoutLang] || pathWithoutLang;
-    
+
     navigate(`/${newLanguage}${mappedPath}`);
   };
 
