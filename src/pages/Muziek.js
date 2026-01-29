@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "../NL.css";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { useTranslation } from "../translations";
@@ -122,7 +122,7 @@ const MusicNL = () => {
   const getCacheKey = (type, period) => `musicData_${type}_${period}`;
   const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 
-  const getCachedData = (type, period) => {
+  const getCachedData = useCallback((type, period) => {
     try {
       const cacheKey = getCacheKey(type, period);
       const cached = sessionStorage.getItem(cacheKey);
@@ -142,8 +142,8 @@ const MusicNL = () => {
       console.warn("Error reading from cache:", error);
       return null;
     }
-  };
-  const setCachedData = (type, period, data) => {
+  }, []);
+  const setCachedData = useCallback((type, period, data) => {
     try {
       const cacheKey = getCacheKey(type, period);
       const cacheData = {
@@ -154,7 +154,7 @@ const MusicNL = () => {
     } catch (error) {
       console.warn("Error writing to cache:", error);
     }
-  };
+  }, []);
 
   const formatDuration = (ms) => {
     if (typeof ms !== "number" || ms < 0) return "0:00";

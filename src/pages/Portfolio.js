@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useTranslation } from "../translations";
 
 const Portfolio = () => {
@@ -6,7 +6,7 @@ const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [availableCategories, setAvailableCategories] = useState([]);
 
-  const creations = [
+  const creations = useMemo(() => [
     {
       id: 1,
       title: t("portfolio.projects.portfolioWebsite.title"),
@@ -46,15 +46,15 @@ const Portfolio = () => {
       image: "/catchtwo.png",
     },
     // Add more items as needed
-  ];
+  ], [t]);
 
-  const allCategories = [
+  const allCategories = useMemo(() => [
     { key: "all", label: t("portfolio.categories.all"), icon: "🎨" },
     { key: "websites", label: t("portfolio.categories.websites"), icon: "💻" },
     { key: "code", label: t("portfolio.categories.code"), icon: "⚡" },
     { key: "poems", label: t("portfolio.categories.poems"), icon: "📝" },
     { key: "design", label: t("portfolio.categories.design"), icon: "🎭" },
-  ];
+  ], [t]);
 
   // Determine which categories to show based on available data
   React.useEffect(() => {
