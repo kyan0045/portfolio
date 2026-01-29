@@ -266,7 +266,7 @@ const MusicNL = () => {
     fetchData();
     // Reset display count when filters change
     setDisplayCount(3);
-  }, [selectedTimePeriod, viewType]);
+  }, [selectedTimePeriod, viewType, getCachedData, setCachedData]);
 
   useEffect(() => {
     const fetchTrackData = async (isBackgroundRefresh = false) => {
@@ -349,7 +349,7 @@ const MusicNL = () => {
         clearInterval(periodicFetchIntervalRef.current);
       if (songEndTimeoutRef.current) clearTimeout(songEndTimeoutRef.current);
     };
-  }, []);
+  }, [currentTrack]);
 
   useEffect(() => {
     if (progressIntervalRef.current) {

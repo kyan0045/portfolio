@@ -81,7 +81,7 @@ const Portfolio = () => {
     ) {
       setSelectedCategory(categories[0].key);
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, allCategories, creations]);
 
   const filteredCreations =
     selectedCategory === "all"

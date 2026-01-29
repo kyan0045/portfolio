@@ -101,7 +101,7 @@ const Bibliotheek = () => {
       .catch((error) =>
         console.error("Error fetching bibliotheek data:", error)
       );
-  }, []);
+  }, [activeTab, t]);
 
   // First filter by active tab, then split into dated and undated, then sort
   const getFilteredItems = () => {
