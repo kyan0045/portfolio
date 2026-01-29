@@ -3,6 +3,8 @@ import "../NL.css";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { useTranslation } from "../translations";
 
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+
 const MusicNL = () => {
   const { t } = useTranslation();
   const [topArtists, setTopArtists] = useState([]);
@@ -120,7 +122,6 @@ const MusicNL = () => {
 
   // Cache management functions
   const getCacheKey = (type, period) => `musicData_${type}_${period}`;
-  const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 
   const getCachedData = useCallback((type, period) => {
     try {
