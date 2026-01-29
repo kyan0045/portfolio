@@ -6,55 +6,65 @@ const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [availableCategories, setAvailableCategories] = useState([]);
 
-  const creations = useMemo(() => [
-    {
-      id: 1,
-      title: t("portfolio.projects.portfolioWebsite.title"),
-      description: t("portfolio.projects.portfolioWebsite.description"),
-      category: "websites",
-      type: "Website",
-      technologies: ["React", "Tailwind CSS", "JavaScript"],
-      link: "https://github.com/kyan0045/portfolio",
-      image: "/logo.gif",
-    },
-    {
-      id: 2,
-      title: t("portfolio.projects.githubProfile.title"),
-      description: t("portfolio.projects.githubProfile.description"),
-      category: "code",
-      type: "GitHub",
-      technologies: [
-        "NodeJS",
-        "Tensorflow",
-        "JavaScript",
-        "React",
-        "Tailwind CSS",
-        "Git",
-        "CSS",
-      ],
-      link: "https://github.com/kyan0045",
-      image: "/logo.gif",
-    },
-    {
-      id: 3,
-      title: t("portfolio.projects.catchTwo.title"),
-      description: t("portfolio.projects.catchTwo.description"),
-      category: "code",
-      type: "Code",
-      technologies: ["NodeJS", "Tensorflow", "Puppeteer"],
-      link: "https://github.com/kyan0045/catchtwo",
-      image: "/catchtwo.png",
-    },
-    // Add more items as needed
-  ], [t]);
+  const creations = useMemo(
+    () => [
+      {
+        id: 1,
+        title: t("portfolio.projects.portfolioWebsite.title"),
+        description: t("portfolio.projects.portfolioWebsite.description"),
+        category: "websites",
+        type: "Website",
+        technologies: ["React", "Tailwind CSS", "JavaScript"],
+        link: "https://github.com/kyan0045/portfolio",
+        image: "/logo.gif",
+      },
+      {
+        id: 2,
+        title: t("portfolio.projects.githubProfile.title"),
+        description: t("portfolio.projects.githubProfile.description"),
+        category: "code",
+        type: "GitHub",
+        technologies: [
+          "NodeJS",
+          "Tensorflow",
+          "JavaScript",
+          "React",
+          "Tailwind CSS",
+          "Git",
+          "CSS",
+        ],
+        link: "https://github.com/kyan0045",
+        image: "/logo.gif",
+      },
+      {
+        id: 3,
+        title: t("portfolio.projects.catchTwo.title"),
+        description: t("portfolio.projects.catchTwo.description"),
+        category: "code",
+        type: "Code",
+        technologies: ["NodeJS", "Tensorflow", "Puppeteer"],
+        link: "https://github.com/kyan0045/catchtwo",
+        image: "/catchtwo.png",
+      },
+      // Add more items as needed
+    ],
+    [t]
+  );
 
-  const allCategories = useMemo(() => [
-    { key: "all", label: t("portfolio.categories.all"), icon: "🎨" },
-    { key: "websites", label: t("portfolio.categories.websites"), icon: "💻" },
-    { key: "code", label: t("portfolio.categories.code"), icon: "⚡" },
-    { key: "poems", label: t("portfolio.categories.poems"), icon: "📝" },
-    { key: "design", label: t("portfolio.categories.design"), icon: "🎭" },
-  ], [t]);
+  const allCategories = useMemo(
+    () => [
+      { key: "all", label: t("portfolio.categories.all"), icon: "🎨" },
+      {
+        key: "websites",
+        label: t("portfolio.categories.websites"),
+        icon: "💻",
+      },
+      { key: "code", label: t("portfolio.categories.code"), icon: "⚡" },
+      { key: "poems", label: t("portfolio.categories.poems"), icon: "📝" },
+      { key: "design", label: t("portfolio.categories.design"), icon: "🎭" },
+    ],
+    [t]
+  );
 
   // Determine which categories to show based on available data
   React.useEffect(() => {
