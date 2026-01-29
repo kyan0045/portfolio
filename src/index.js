@@ -384,6 +384,7 @@ const LanguageRedirect = () => {
 // Dutch routes
 const DutchRoutes = () => (
   <Routes>
+    <Route path="/" element={<Navigate to="/nl/over-mij" replace />} />
     <Route path="/over-mij" element={<OverMij />} />
     <Route path="/muziek" element={<Muziek />} />
     <Route path="/bibliotheek" element={<Bibliotheek />} />
@@ -395,6 +396,7 @@ const DutchRoutes = () => (
 // English routes
 const EnglishRoutes = () => (
   <Routes>
+    <Route path="/" element={<Navigate to="/en/about-me" replace />} />
     <Route path="/about-me" element={<OverMij />} />
     <Route path="/music" element={<Muziek />} />
     <Route path="/library" element={<Bibliotheek />} />
