@@ -62,10 +62,12 @@ export const translations = {
     library: {
       title: "Bibliotheek",
       archive: "Archief",
+      articlesIntro: "Journalistiek waar ik lovende woorden voor heb",
       tabs: {
         series: "Series & Films",
         books: "Boeken",
         poetry: "Poëzie",
+        articles: "Artikelen",
       },
       sort: {
         recent: "Recent",
@@ -74,6 +76,8 @@ export const translations = {
         rating: "Mijn Beoordeling",
         title: "Titel (A-Z)",
       },
+      published: "Gepubliceerd op",
+      readArticle: "Lees artikel",
       finished: {
         series: "Afgerond op",
         film: "Gezien op",
@@ -203,10 +207,12 @@ export const translations = {
     library: {
       title: "Library",
       archive: "Archive",
+      articlesIntro: "Journalism I have high praise for",
       tabs: {
         series: "Series & Films",
         books: "Books",
         poetry: "Poetry",
+        articles: "Articles",
       },
       sort: {
         recent: "Recently",
@@ -215,6 +221,8 @@ export const translations = {
         rating: "My Rating",
         title: "Title (A-Z)",
       },
+      published: "Published on",
+      readArticle: "Read article",
       finished: {
         series: "Finished on",
         film: "Watched on",

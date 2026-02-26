@@ -69,7 +69,6 @@ const Bibliotheek = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [sortType, setSortType] = useState("finishedDate");
   const [activeTab, setActiveTab] = useState("series");
-  const [availableTabs, setAvailableTabs] = useState([]);
 
   useEffect(() => {
     fetch("/content/bibliotheek.json")
@@ -77,31 +76,36 @@ const Bibliotheek = () => {
       .then((data) => {
         setItems(data);
 
-        // Determine which tabs to show based on available data
-        const types = [...new Set(data.map((item) => item.type))];
-        const tabs = [];
-
-        if (types.includes("Series") || types.includes("Film")) {
-          tabs.push({ key: "series", label: t("library.tabs.series") });
-        }
-        if (types.includes("Book")) {
-          tabs.push({ key: "boeken", label: t("library.tabs.books") });
-        }
-        if (types.includes("Poetry")) {
-          tabs.push({ key: "poezie", label: t("library.tabs.poetry") });
-        }
-
-        setAvailableTabs(tabs);
-
-        // Set the first available tab as active if current activeTab is not available
-        if (tabs.length > 0 && !tabs.some((tab) => tab.key === activeTab)) {
-          setActiveTab(tabs[0].key);
+        const fetchedTypes = [...new Set(data.map((item) => item.type))];
+        const hasSeries = fetchedTypes.includes("Series") || fetchedTypes.includes("Film");
+        
+        if (!hasSeries && fetchedTypes.length > 0) {
+          if (fetchedTypes.includes("Book")) setActiveTab("boeken");
+          else if (fetchedTypes.includes("Poetry")) setActiveTab("poezie");
+          else if (fetchedTypes.includes("Article")) setActiveTab("artikelen");
         }
       })
       .catch((error) =>
         console.error("Error fetching bibliotheek data:", error)
       );
-  }, [activeTab, t]);
+  }, []);
+
+  // Determine which tabs to show based on available data
+  const types = [...new Set(items.map((item) => item.type))];
+  const availableTabs = [];
+
+  if (types.includes("Series") || types.includes("Film")) {
+    availableTabs.push({ key: "series", label: t("library.tabs.series") });
+  }
+  if (types.includes("Book")) {
+    availableTabs.push({ key: "boeken", label: t("library.tabs.books") });
+  }
+  if (types.includes("Poetry")) {
+    availableTabs.push({ key: "poezie", label: t("library.tabs.poetry") });
+  }
+  if (types.includes("Article")) {
+    availableTabs.push({ key: "artikelen", label: t("library.tabs.articles") });
+  }
 
   // First filter by active tab, then split into dated and undated, then sort
   const getFilteredItems = () => {
@@ -115,6 +119,8 @@ const Bibliotheek = () => {
       filtered = items.filter((item) => item.type === "Book");
     } else if (activeTab === "poezie") {
       filtered = items.filter((item) => item.type === "Poetry");
+    } else if (activeTab === "artikelen") {
+      filtered = items.filter((item) => item.type === "Article");
     }
     return filtered;
   };
@@ -174,6 +180,63 @@ const Bibliotheek = () => {
     </button>
   );
 
+  const renderArticles = (articlesToRender) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+      {articlesToRender.map((article) => (
+        <a
+          key={article.title}
+          href={article.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:-translate-y-2 transition-transform duration-300 h-64"
+        >
+          {article.coverUrl ? (
+            <img
+              src={article.coverUrl}
+              alt={`Cover for ${article.title}`}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full bg-neutral-800"></div>
+          )}
+          
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
+            <p className="text-xs font-semibold uppercase tracking-widest text-neutral-300 mb-2">
+              {article.publication}
+            </p>
+            <h3 className="text-xl font-bold mb-2 leading-snug line-clamp-3">
+              {article.title}
+            </h3>
+            <div className="flex items-center justify-between mt-2">
+              <span className="text-sm text-neutral-300">
+                {article.author}
+              </span>
+              
+              <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  );
+
   const renderGrid = (itemsToRender) => (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       {itemsToRender.map((item) => (
@@ -214,26 +277,36 @@ const Bibliotheek = () => {
           ))}
         </div>
 
-        <div className="flex justify-end mb-8">
-          <select
-            onChange={(e) => setSortType(e.target.value)}
-            value={sortType}
-            className="bg-white border border-neutral-300 rounded-md py-2 px-4 text-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-400 transition"
-          >
-            <option value="finishedDate">
-              {t("library.sort.recent")}{" "}
-              {activeTab === "series"
-                ? t("library.sort.watched")
-                : t("library.sort.read")}
-            </option>
-            <option value="rating">{t("library.sort.rating")}</option>
-            <option value="title">{t("library.sort.title")}</option>
-          </select>
-        </div>
+        {activeTab !== "artikelen" && (
+          <div className="flex justify-end mb-8">
+            <select
+              onChange={(e) => setSortType(e.target.value)}
+              value={sortType}
+              className="bg-white border border-neutral-300 rounded-md py-2 px-4 text-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-400 transition"
+            >
+              <option value="finishedDate">
+                {t("library.sort.recent")}{" "}
+                {activeTab === "series"
+                  ? t("library.sort.watched")
+                  : t("library.sort.read")}
+              </option>
+              <option value="rating">{t("library.sort.rating")}</option>
+              <option value="title">{t("library.sort.title")}</option>
+            </select>
+          </div>
+        )}
 
-        {renderGrid(mainItems)}
+        {activeTab === "artikelen" && (
+          <p className="text-sm text-neutral-500 text-center mb-8">
+            {t("library.articlesIntro")}
+          </p>
+        )}
 
-        {archiveItems.length > 0 && (
+        {activeTab === "artikelen"
+          ? renderArticles(filteredItems)
+          : renderGrid(mainItems)}
+
+        {activeTab !== "artikelen" && archiveItems.length > 0 && (
           <div className="mt-16">
             <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-black font-dancing-script">
               {t("library.archive") || "Archief"}
