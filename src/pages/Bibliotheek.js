@@ -77,8 +77,9 @@ const Bibliotheek = () => {
         setItems(data);
 
         const fetchedTypes = [...new Set(data.map((item) => item.type))];
-        const hasSeries = fetchedTypes.includes("Series") || fetchedTypes.includes("Film");
-        
+        const hasSeries =
+          fetchedTypes.includes("Series") || fetchedTypes.includes("Film");
+
         if (!hasSeries && fetchedTypes.length > 0) {
           if (fetchedTypes.includes("Book")) setActiveTab("boeken");
           else if (fetchedTypes.includes("Poetry")) setActiveTab("poezie");
@@ -86,7 +87,7 @@ const Bibliotheek = () => {
         }
       })
       .catch((error) =>
-        console.error("Error fetching bibliotheek data:", error)
+        console.error("Error fetching bibliotheek data:", error),
       );
   }, []);
 
@@ -113,7 +114,7 @@ const Bibliotheek = () => {
 
     if (activeTab === "series") {
       filtered = items.filter(
-        (item) => item.type === "Series" || item.type === "Film"
+        (item) => item.type === "Series" || item.type === "Film",
       );
     } else if (activeTab === "boeken") {
       filtered = items.filter((item) => item.type === "Book");
@@ -199,9 +200,9 @@ const Bibliotheek = () => {
           ) : (
             <div className="w-full h-full bg-neutral-800"></div>
           )}
-          
+
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-          
+
           <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
             <p className="text-xs font-semibold uppercase tracking-widest text-neutral-300 mb-2">
               {article.publication}
@@ -210,10 +211,8 @@ const Bibliotheek = () => {
               {article.title}
             </h3>
             <div className="flex items-center justify-between mt-2">
-              <span className="text-sm text-neutral-300">
-                {article.author}
-              </span>
-              
+              <span className="text-sm text-neutral-300">{article.author}</span>
+
               <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -377,7 +376,7 @@ const Bibliotheek = () => {
                               : t("library.finished.book")}
                           :{" "}
                           {new Date(
-                            parseDate(selectedItem.finishedDate)
+                            parseDate(selectedItem.finishedDate),
                           ).toLocaleDateString("nl-NL", {
                             year: "numeric",
                             month: "long",
@@ -469,7 +468,7 @@ const Bibliotheek = () => {
                             : t("library.finished.book")}
                         :{" "}
                         {new Date(
-                          parseDate(selectedItem.finishedDate)
+                          parseDate(selectedItem.finishedDate),
                         ).toLocaleDateString("nl-NL", {
                           year: "numeric",
                           month: "long",
