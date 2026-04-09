@@ -141,7 +141,7 @@ const Bibliotheek = () => {
   const sortItems = (itemsToSort, isUndated = false) => {
     return [...itemsToSort].sort((a, b) => {
       if (sortType === "finishedDate") {
-        if (isUndated) return a.title.localeCompare(b.title);
+        if (isUndated) return (a.title || "").localeCompare(b.title || "");
         // Handle case where finishedDate might be missing if we are in the "shouldSplit=false" path but somehow got here?
         // Actually if sortType is finishedDate, we ARE splitting.
         // But just to be safe in logic:
@@ -153,10 +153,10 @@ const Bibliotheek = () => {
         return dateB - dateA;
       }
       if (sortType === "rating") {
-        return b.rating - a.rating;
+        return (b.rating || 0) - (a.rating || 0);
       }
       if (sortType === "title") {
-        return a.title.localeCompare(b.title);
+        return (a.title || "").localeCompare(b.title || "");
       }
       return 0;
     });
@@ -263,6 +263,22 @@ const Bibliotheek = () => {
     </div>
   );
 
+  const renderPoetry = (itemsToRender) => (
+    <div className="flex flex-wrap justify-center items-center gap-10 py-12">
+      {itemsToRender.map((poem, index) => (
+        <div
+          key={index}
+          className="relative bg-white border border-neutral-100 rounded-[2.5rem] p-8 md:p-10 shadow-[0_10px_40px_-5px_rgba(0,0,0,0.1)] w-80 max-w-full"
+        >
+          <div className="absolute -z-10 inset-0 bg-gradient-to-br from-neutral-50 to-neutral-200 opacity-60 blur-lg rounded-[2.5rem]"></div>
+          <p className="whitespace-pre-wrap text-neutral-800 italic leading-relaxed text-center">
+            {poem.text || poem.review}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <section id="bibliotheek" className="pt-32 pb-16 md:py-16 fade-in-1s">
       <div className="mx-auto max-w-5xl text-center">
@@ -276,7 +292,7 @@ const Bibliotheek = () => {
           ))}
         </div>
 
-        {activeTab !== "artikelen" && (
+        {activeTab !== "artikelen" && activeTab !== "poezie" && (
           <div className="flex justify-end mb-8">
             <select
               onChange={(e) => setSortType(e.target.value)}
@@ -301,11 +317,12 @@ const Bibliotheek = () => {
           </p>
         )}
 
-        {activeTab === "artikelen"
-          ? renderArticles(filteredItems)
-          : renderGrid(mainItems)}
+        {/* Dynamic rendering based on active tab */}
+        {activeTab === "artikelen" && renderArticles(filteredItems)}
+        {activeTab === "poezie" && renderPoetry(filteredItems)}
+        {activeTab !== "artikelen" && activeTab !== "poezie" && renderGrid(mainItems)}
 
-        {activeTab !== "artikelen" && archiveItems.length > 0 && (
+        {activeTab !== "artikelen" && activeTab !== "poezie" && archiveItems.length > 0 && (
           <div className="mt-16">
             <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-black font-dancing-script">
               {t("library.archive") || "Archief"}
