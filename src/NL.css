@@ -1,23 +1,8 @@
-/* @tailwind base; */
-/* @tailwind components; */
-/* @tailwind utilities; */
-
-html {
-  height: 100%;
-  overflow-x: hidden;
-}
-
-body {
-  background-color: #ffffff;
-  color: #000000;
-  min-height: 100%;
-}
-
 .frame-corner {
   position: fixed;
-  width: 28px;
-  height: 28px;
-  border-color: #000000;
+  width: 30px;
+  height: 30px;
+  border-color: var(--color-accent);
   border-style: solid;
   z-index: 50;
   transition: all 0.3s ease-in-out;
@@ -65,26 +50,6 @@ body {
   animation: subtle-pulse 10s ease-in-out infinite;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #ffffff; /* White track */
-}
-::-webkit-scrollbar-thumb {
-  background: #000000; /* Black thumb */
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #333333; /* Darker gray on hover */
-}
-/* Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #000000 #ffffff; /* thumb track */
-}
-
 .fade-in-1s {
   animation: fadeInAnimation 1s ease-in-out;
 }
@@ -128,6 +93,7 @@ body {
 .music-artist-card {
   background-color: #fff;
   position: relative;
+  border-radius: var(--radius-lg);
 }
 
 .music-artist-card::before {
@@ -137,8 +103,8 @@ body {
   left: 10px;
   width: 20px;
   height: 20px;
-  border-top: 1.5px solid #000000;
-  border-left: 1.5px solid #000000;
+  border-top: 1.5px solid var(--color-accent);
+  border-left: 1.5px solid var(--color-accent);
   opacity: 0.7;
   transition: all 0.3s ease-in-out;
 }
@@ -151,7 +117,7 @@ body {
 
 /* Styling for the Spotify Embed Container */
 .spotify-embed-container {
-  border: 1.5px solid #000000; /* Match frame corner style */
+  border: 1.5px solid var(--color-accent); /* Match frame corner style */
   /* The iframe itself has borderRadius, but this ensures the container also looks sharp */
 }
 

@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import "../NL.css";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { useTranslation } from "../translations";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 
 const MusicNL = () => {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const [topArtists, setTopArtists] = useState([]);
   const [topTracks, setTopTracks] = useState([]);
   const [statsData, setStatsData] = useState(null);
@@ -400,7 +402,7 @@ const MusicNL = () => {
   return (
     <section id="muziek" className="pt-32 pb-16 md:py-16 fade-in-1s">
       <div className="mx-auto max-w-5xl text-center">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-black font-dancing-script">
+        <h1 className="page-heading font-bold text-black font-dancing-script">
           {t("music.title")}
         </h1>
         {/* Currently Playing Section */}
@@ -429,6 +431,8 @@ const MusicNL = () => {
                       <img
                         src={currentTrack.track.albums[0].image}
                         alt={currentTrack.track.albums[0].name || "Album art"}
+                        loading="lazy"
+                        decoding="async"
                         className="w-24 h-24 rounded-md shadow-md object-cover flex-shrink-0"
                       />
                     )}
@@ -462,7 +466,7 @@ const MusicNL = () => {
                       <p className="text-xs text-neutral-500 mt-1">
                         {t("music.listenedOn")}{" "}
                         {new Date(currentTrack.endTime).toLocaleDateString(
-                          "nl-NL",
+                          language === "en" ? "en-GB" : "nl-NL",
                           { hour: "2-digit", minute: "2-digit" }
                         )}
                       </p>
@@ -567,7 +571,8 @@ const MusicNL = () => {
                 <p className="text-2xl font-bold text-black mb-1">
                   {(
                     statsData?.count || statsData?.items?.count
-                  )?.toLocaleString("nl-NL") || "0"}
+                  )?.toLocaleString(language === "en" ? "en-GB" : "nl-NL") ||
+                    "0"}
                 </p>
                 <p className="text-sm text-neutral-600">
                   {t("music.totalStreams")}
@@ -626,6 +631,8 @@ const MusicNL = () => {
                         <img
                           src={item.artist.image}
                           alt={item.artist.name}
+                          loading="lazy"
+                          decoding="async"
                           className="w-24 h-24 rounded-full mb-4 shadow-md object-cover"
                         />
                       )}
@@ -642,7 +649,9 @@ const MusicNL = () => {
                       <div className="text-xs text-neutral-600 mb-4 text-center space-y-1">
                         {item.streams && (
                           <p>
-                            {item.streams.toLocaleString("nl-NL")}{" "}
+                            {item.streams.toLocaleString(
+                              language === "en" ? "en-GB" : "nl-NL"
+                            )}{" "}
                             {t("music.streams")}
                           </p>
                         )}
@@ -673,6 +682,8 @@ const MusicNL = () => {
                         <img
                           src={item.track.albums[0].image}
                           alt={item.track.albums[0].name}
+                          loading="lazy"
+                          decoding="async"
                           className="w-24 h-24 rounded-md mb-4 shadow-md object-cover"
                         />
                       )}
@@ -689,7 +700,9 @@ const MusicNL = () => {
                       <div className="text-xs text-neutral-600 mb-4 text-center space-y-1">
                         {item.streams && (
                           <p>
-                            {item.streams.toLocaleString("nl-NL")}{" "}
+                            {item.streams.toLocaleString(
+                              language === "en" ? "en-GB" : "nl-NL"
+                            )}{" "}
                             {t("music.streams")}
                           </p>
                         )}

@@ -113,7 +113,7 @@ const Portfolio = () => {
   );
 
   const CreationCard = ({ creation }) => (
-    <div className="group bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-neutral-100">
+    <div className="group card-bold overflow-hidden">
       {creation.image && (
         <div className="aspect-video w-full overflow-hidden bg-neutral-100 flex items-center justify-center">
           {creation.id === 1 ? (
@@ -125,6 +125,8 @@ const Portfolio = () => {
             <img
               src={creation.image}
               alt={creation.title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           )}
@@ -189,7 +191,7 @@ const Portfolio = () => {
     <section className="pt-32 pb-16 md:py-16 fade-in-1s">
       <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-24">
         <div className="text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-black font-dancing-script">
+          <h1 className="page-heading font-bold mb-4 text-black font-dancing-script">
             {t("portfolio.title")}
           </h1>
           <p className="text-neutral-600 max-w-2xl mx-auto">
@@ -224,7 +226,7 @@ const Portfolio = () => {
 
         {/* Coming Soon Section */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-neutral-50 to-neutral-100 rounded-xl p-8">
+          <div className="panel-surface p-8">
             <h3 className="text-xl font-bold text-black mb-3">
               {t("portfolio.comingSoon")}
             </h3>

@@ -22,12 +22,14 @@ const ImageSlider = ({ images }) => {
   return (
     <div className="relative w-40 h-40 mx-auto mb-8">
       {/* Image container */}
-      <div className="relative w-full h-full rounded-full overflow-hidden shadow-lg border-4 border-white">
+      <div className="relative w-full h-full rounded-full overflow-hidden shadow-strong border-4 border-white">
         {images.map((src, index) => (
           <img
             key={src}
             src={src}
             alt={`Slide ${index + 1}`}
+            loading={index === currentIndex ? "eager" : "lazy"}
+            decoding="async"
             className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"}`}
           />
         ))}

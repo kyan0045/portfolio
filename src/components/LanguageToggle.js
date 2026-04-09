@@ -59,10 +59,11 @@ const LanguageToggle = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="fixed top-8 right-8 z-50 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border border-neutral-200 group"
+      className="fixed top-20 right-4 sm:top-8 sm:right-8 z-50 bg-white/90 backdrop-blur-sm rounded-xl px-3 sm:px-4 py-2 shadow-soft hover:shadow-strong transition-all duration-300 hover:scale-105 border border-neutral-200 group"
       title={
         language === "nl" ? "Switch to English" : "Schakel naar Nederlands"
       }
+      aria-label={language === "nl" ? "Switch to English" : "Schakel naar Nederlands"}
     >
       {language === "nl" ? (
         <img

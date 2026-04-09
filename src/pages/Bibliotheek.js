@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "../translations";
+import { useLanguage } from "../contexts/LanguageContext";
 
 // Helper function to parse dd-mm-yyyy format
 const parseDate = (dateString) => {
@@ -65,10 +66,12 @@ const StarRating = ({ rating }) => {
 
 const Bibliotheek = () => {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [sortType, setSortType] = useState("finishedDate");
   const [activeTab, setActiveTab] = useState("series");
+  const lastFocusedElement = useRef(null);
 
   useEffect(() => {
     fetch("/content/bibliotheek.json")
@@ -165,8 +168,27 @@ const Bibliotheek = () => {
   const mainItems = sortItems(datedItems);
   const archiveItems = sortItems(undatedItems, true);
 
-  const openModal = (item) => setSelectedItem(item);
-  const closeModal = () => setSelectedItem(null);
+  const openModal = (item) => {
+    lastFocusedElement.current = document.activeElement;
+    setSelectedItem(item);
+  };
+  const closeModal = () => {
+    setSelectedItem(null);
+    if (lastFocusedElement.current?.focus) {
+      lastFocusedElement.current.focus();
+    }
+  };
+
+  useEffect(() => {
+    if (!selectedItem) return undefined;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedItem]);
 
   const TabButton = ({ tab, label }) => (
     <button
@@ -189,12 +211,14 @@ const Bibliotheek = () => {
           href={article.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:-translate-y-2 transition-transform duration-300 h-64"
+          className="group card-bold relative overflow-hidden cursor-pointer transform hover:-translate-y-2 transition-transform duration-300 h-64"
         >
           {article.coverUrl ? (
             <img
               src={article.coverUrl}
               alt={`Cover for ${article.title}`}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           ) : (
@@ -241,12 +265,22 @@ const Bibliotheek = () => {
       {itemsToRender.map((item) => (
         <div
           key={item.title}
-          className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:-translate-y-2 transition-transform duration-300"
+          className="group card-bold relative overflow-hidden cursor-pointer transform hover:-translate-y-2 transition-transform duration-300"
           onClick={() => openModal(item)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              openModal(item);
+            }
+          }}
         >
           <img
             src={item.coverUrl}
             alt={`Cover for ${item.title}`}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -282,7 +316,7 @@ const Bibliotheek = () => {
   return (
     <section id="bibliotheek" className="pt-32 pb-16 md:py-16 fade-in-1s">
       <div className="mx-auto max-w-5xl text-center">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-black font-dancing-script">
+        <h1 className="page-heading font-bold text-black font-dancing-script">
           {t("library.title")}
         </h1>
 
@@ -362,6 +396,7 @@ const Bibliotheek = () => {
                     <img
                       src={selectedItem.coverUrl}
                       alt={`Cover for ${selectedItem.title}`}
+                      decoding="async"
                       className={`w-full h-full ${
                         selectedItem.type === "Book" ||
                         selectedItem.type === "Poetry"
@@ -394,11 +429,14 @@ const Bibliotheek = () => {
                           :{" "}
                           {new Date(
                             parseDate(selectedItem.finishedDate),
-                          ).toLocaleDateString("nl-NL", {
+                        ).toLocaleDateString(
+                          language === "en" ? "en-GB" : "nl-NL",
+                          {
                             year: "numeric",
                             month: "long",
                             day: "numeric",
-                          })}
+                          }
+                        )}
                         </>
                       ) : (
                         t("library.finished.unknown") || "Datum onbekend"
@@ -453,6 +491,7 @@ const Bibliotheek = () => {
                       <img
                         src={selectedItem.coverUrl}
                         alt={`Cover for ${selectedItem.title}`}
+                        decoding="async"
                         className="max-w-48 max-h-64 min-w-32 min-h-40 w-auto h-auto object-contain"
                         style={{
                           aspectRatio: "auto",
@@ -486,11 +525,14 @@ const Bibliotheek = () => {
                         :{" "}
                         {new Date(
                           parseDate(selectedItem.finishedDate),
-                        ).toLocaleDateString("nl-NL", {
+                        ).toLocaleDateString(
+                          language === "en" ? "en-GB" : "nl-NL",
+                          {
                           year: "numeric",
                           month: "long",
                           day: "numeric",
-                        })}
+                          }
+                        )}
                       </>
                     ) : (
                       t("library.finished.unknown") || "Datum onbekend"

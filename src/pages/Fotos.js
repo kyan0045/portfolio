@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "../translations";
+import { useLanguage } from "../contexts/LanguageContext";
 
 // Helper function to correctly parse dd-mm-yyyy format
 const parseDate = (dateString) => {
@@ -9,8 +10,10 @@ const parseDate = (dateString) => {
 
 const Fotos = () => {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const lastFocusedElement = useRef(null);
 
   useEffect(() => {
     fetch("/content/gallery.json")
@@ -27,17 +30,32 @@ const Fotos = () => {
   }, []);
 
   const openModal = (image) => {
+    lastFocusedElement.current = document.activeElement;
     setSelectedImage(image);
   };
 
   const closeModal = () => {
     setSelectedImage(null);
+    if (lastFocusedElement.current?.focus) {
+      lastFocusedElement.current.focus();
+    }
   };
+
+  useEffect(() => {
+    if (!selectedImage) return undefined;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImage]);
 
   // Helper to format date for display
   const formatDate = (dateString) => {
     const date = parseDate(dateString);
-    return date.toLocaleDateString("nl-NL", {
+    return date.toLocaleDateString(language === "en" ? "en-GB" : "nl-NL", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -46,7 +64,7 @@ const Fotos = () => {
 
   return (
     <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-24 pt-32 pb-10 md:py-16">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-black font-dancing-script text-center">
+      <h1 className="page-heading font-bold text-black font-dancing-script text-center">
         {t("photos.title")}
       </h1>
 
@@ -54,12 +72,22 @@ const Fotos = () => {
         {images.map((image) => (
           <div
             key={image.url} // Use unique URL for the key
-            className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
+            className="group card-bold relative overflow-hidden cursor-pointer"
             onClick={() => openModal(image)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openModal(image);
+              }
+            }}
           >
             <img
               src={image.url}
               alt={image.description}
+              loading="lazy"
+              decoding="async"
               className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
@@ -82,6 +110,7 @@ const Fotos = () => {
             <img
               src={selectedImage.url}
               alt={selectedImage.description}
+              decoding="async"
               className="object-contain rounded-lg max-h-[90vh] max-w-[90vw] w-auto h-auto mx-auto"
             />
             <button

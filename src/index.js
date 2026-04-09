@@ -22,6 +22,12 @@ import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 import { useTranslation } from "./translations";
 import LanguageToggle from "./components/LanguageToggle";
 
+const isHomePath = (pathname) =>
+  pathname === "/" ||
+  pathname === "/over-mij" ||
+  pathname === "/nl/over-mij" ||
+  pathname === "/en/about-me";
+
 // URL Language Wrapper Component
 const LanguageRouteWrapper = ({ children }) => {
   const { lang } = useParams();
@@ -80,11 +86,7 @@ const NavbarNL = () => {
     },
   ];
 
-  const isHomePage =
-    location.pathname === "/" ||
-    location.pathname === "/over-mij" ||
-    location.pathname === "/nl/over-mij" ||
-    location.pathname === "/en/about-me";
+  const isHomePage = isHomePath(location.pathname);
 
   // Scroll detection
   React.useEffect(() => {
@@ -104,7 +106,7 @@ const NavbarNL = () => {
         <div
           className={`fixed top-10 left-0 right-0 z-30 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ease-in-out ${
             isScrolled
-              ? "bg-white/80 backdrop-blur-sm border-l border-r border-b border-neutral-200/60 shadow-lg"
+              ? "bg-white/90 backdrop-blur-md border-l border-r border-b border-neutral-200 shadow-soft"
               : "bg-transparent"
           }`}
         >
@@ -128,10 +130,10 @@ const NavbarNL = () => {
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`font-rounded-nav hover:scale-110 transition-all duration-300 ease-in-out transform ${
+                  className={`font-rounded-nav hover:scale-105 transition-all duration-300 ease-in-out transform ${
                       isActive
-                        ? "text-neutral-900 font-semibold"
-                        : "text-neutral-500"
+                      ? "text-black font-semibold underline underline-offset-8 decoration-2"
+                      : "text-neutral-500"
                     } text-lg md:text-xl hover:text-neutral-800`}
                   >
                     {item.name}
@@ -169,11 +171,11 @@ const NavbarNL = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`font-rounded-nav hover:scale-110 transition-all duration-300 ease-in-out transform ${
+                  className={`font-rounded-nav hover:scale-105 transition-all duration-300 ease-in-out transform ${
                     isActive
-                      ? "text-neutral-900 font-semibold"
+                      ? "text-black font-semibold underline underline-offset-8 decoration-2"
                       : "text-neutral-500"
-                  } text-2xl md:text-3xl hover:text-neutral-800`}
+                    } text-2xl md:text-3xl hover:text-neutral-800`}
                 >
                   {item.name}
                 </Link>
@@ -191,8 +193,7 @@ const NavbarNL = () => {
 
 const AppLayout = ({ children }) => {
   const location = useLocation();
-  const isHomePage =
-    location.pathname === "/" || location.pathname === "/over-mij";
+  const isHomePage = isHomePath(location.pathname);
   const [isScrolled, setIsScrolled] = React.useState(false);
 
   // Scroll detection
@@ -220,10 +221,10 @@ const AppLayout = ({ children }) => {
       <div className="frame-corner bottom-right"></div>
       <NavbarNL />
       <div
-        className={`main-content-wrapper container mx-auto px-6 sm:px-8 md:px-12 lg:px-24 ${
+        className={`main-content-wrapper page-shell container mx-auto px-6 sm:px-8 md:px-12 lg:px-24 ${
           isHomePage
             ? "flex flex-col items-center justify-center min-h-[calc(80vh)] text-center py-10"
-            : "py-10 md:py-16 pt-28"
+            : "py-10 md:py-16 pt-32"
         }`}
       >
         <main className={`${isHomePage ? "w-full" : ""}`}>{children}</main>

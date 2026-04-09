@@ -2,10 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f7f7f8;
+  --color-surface-strong: #efeff1;
+  --color-text: #111111;
+  --color-text-muted: #5f6368;
+  --color-border: #dfdfe3;
+  --color-accent: #0f172a;
+  --shadow-soft: 0 10px 30px -16px rgba(15, 23, 42, 0.35);
+  --shadow-strong: 0 20px 40px -24px rgba(15, 23, 42, 0.45);
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+}
+
 .container {
   max-width: 1200px;
 }
 
+html {
+  min-height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
 .fade-in-1s {
   animation: fadeIn 1s ease-in-out;
+}
+
+.page-shell {
+  width: 100%;
+}
+
+.page-heading {
+  font-size: clamp(1.9rem, 1.5rem + 1.6vw, 2.6rem);
+  letter-spacing: 0.01em;
+  margin-bottom: 2.2rem;
+  color: var(--color-text);
+}
+
+.panel-surface {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-surface) 88%, white),
+    var(--color-surface)
+  );
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-bold {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: white;
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.card-bold:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-strong);
+  border-color: #c8cad1;
+}
+
+button:focus-visible,
+a:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f8f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #121212;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #121212 #f8f8f8;
 }
