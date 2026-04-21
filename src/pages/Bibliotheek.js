@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+} from "react";
 import { useTranslation } from "../translations";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -148,37 +154,41 @@ const Bibliotheek = () => {
   );
   const undatedItems = useMemo(
     () =>
-      shouldSplit
-        ? filteredItems.filter((item) => !item.finishedDate)
-        : [],
+      shouldSplit ? filteredItems.filter((item) => !item.finishedDate) : [],
     [filteredItems, shouldSplit],
   );
 
-  const sortItems = useCallback((itemsToSort, isUndated = false) => {
-    return [...itemsToSort].sort((a, b) => {
-      if (sortType === "finishedDate") {
-        if (isUndated) return (a.title || "").localeCompare(b.title || "");
-        // Handle case where finishedDate might be missing if we are in the "shouldSplit=false" path but somehow got here?
-        // Actually if sortType is finishedDate, we ARE splitting.
-        // But just to be safe in logic:
-        const dateA = parseDate(a.finishedDate);
-        const dateB = parseDate(b.finishedDate);
-        if (!dateA && !dateB) return 0;
-        if (!dateA) return 1;
-        if (!dateB) return -1;
-        return dateB - dateA;
-      }
-      if (sortType === "rating") {
-        return (b.rating || 0) - (a.rating || 0);
-      }
-      if (sortType === "title") {
-        return (a.title || "").localeCompare(b.title || "");
-      }
-      return 0;
-    });
-  }, [sortType]);
+  const sortItems = useCallback(
+    (itemsToSort, isUndated = false) => {
+      return [...itemsToSort].sort((a, b) => {
+        if (sortType === "finishedDate") {
+          if (isUndated) return (a.title || "").localeCompare(b.title || "");
+          // Handle case where finishedDate might be missing if we are in the "shouldSplit=false" path but somehow got here?
+          // Actually if sortType is finishedDate, we ARE splitting.
+          // But just to be safe in logic:
+          const dateA = parseDate(a.finishedDate);
+          const dateB = parseDate(b.finishedDate);
+          if (!dateA && !dateB) return 0;
+          if (!dateA) return 1;
+          if (!dateB) return -1;
+          return dateB - dateA;
+        }
+        if (sortType === "rating") {
+          return (b.rating || 0) - (a.rating || 0);
+        }
+        if (sortType === "title") {
+          return (a.title || "").localeCompare(b.title || "");
+        }
+        return 0;
+      });
+    },
+    [sortType],
+  );
 
-  const mainItems = useMemo(() => sortItems(datedItems), [datedItems, sortItems]);
+  const mainItems = useMemo(
+    () => sortItems(datedItems),
+    [datedItems, sortItems],
+  );
   const archiveItems = useMemo(
     () => sortItems(undatedItems, true),
     [sortItems, undatedItems],
@@ -370,16 +380,20 @@ const Bibliotheek = () => {
         {/* Dynamic rendering based on active tab */}
         {activeTab === "artikelen" && renderArticles(filteredItems)}
         {activeTab === "poezie" && renderPoetry(filteredItems)}
-        {activeTab !== "artikelen" && activeTab !== "poezie" && renderGrid(mainItems)}
+        {activeTab !== "artikelen" &&
+          activeTab !== "poezie" &&
+          renderGrid(mainItems)}
 
-        {activeTab !== "artikelen" && activeTab !== "poezie" && archiveItems.length > 0 && (
-          <div className="mt-16">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-black font-dancing-script">
-              {t("library.archive") || "Archief"}
-            </h2>
-            {renderGrid(archiveItems)}
-          </div>
-        )}
+        {activeTab !== "artikelen" &&
+          activeTab !== "poezie" &&
+          archiveItems.length > 0 && (
+            <div className="mt-16">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-black font-dancing-script">
+                {t("library.archive") || "Archief"}
+              </h2>
+              {renderGrid(archiveItems)}
+            </div>
+          )}
 
         {selectedItem && (
           <div
@@ -445,14 +459,14 @@ const Bibliotheek = () => {
                           :{" "}
                           {new Date(
                             parseDate(selectedItem.finishedDate),
-                        ).toLocaleDateString(
-                          language === "en" ? "en-GB" : "nl-NL",
-                          {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          }
-                        )}
+                          ).toLocaleDateString(
+                            language === "en" ? "en-GB" : "nl-NL",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            },
+                          )}
                         </>
                       ) : (
                         t("library.finished.unknown") || "Datum onbekend"
@@ -544,10 +558,10 @@ const Bibliotheek = () => {
                         ).toLocaleDateString(
                           language === "en" ? "en-GB" : "nl-NL",
                           {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                          }
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          },
                         )}
                       </>
                     ) : (

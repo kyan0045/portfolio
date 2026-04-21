@@ -47,7 +47,7 @@ const Portfolio = () => {
       },
       // Add more items as needed
     ],
-    [t]
+    [t],
   );
 
   const allCategories = useMemo(
@@ -62,12 +62,12 @@ const Portfolio = () => {
       { key: "poems", label: t("portfolio.categories.poems"), icon: "📝" },
       { key: "design", label: t("portfolio.categories.design"), icon: "🎭" },
     ],
-    [t]
+    [t],
   );
 
   const availableCategories = useMemo(() => {
     const existingCategories = new Set(creations.map((item) => item.category));
-    const categories = [allCategories[0]]; 
+    const categories = [allCategories[0]];
 
     allCategories.slice(1).forEach((category) => {
       if (existingCategories.has(category.key)) {
