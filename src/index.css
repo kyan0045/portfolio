@@ -76,6 +76,10 @@ body {
   border-color: #c8cad1;
 }
 
+.portfolio-card:hover {
+  transform: none;
+}
+
 button:focus-visible,
 a:focus-visible,
 select:focus-visible {

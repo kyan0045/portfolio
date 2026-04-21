@@ -4,7 +4,6 @@ import { useTranslation } from "../translations";
 const Portfolio = () => {
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [availableCategories, setAvailableCategories] = useState([]);
 
   const creations = useMemo(
     () => [
@@ -66,32 +65,24 @@ const Portfolio = () => {
     [t]
   );
 
-  // Determine which categories to show based on available data
-  React.useEffect(() => {
-    const existingCategories = [
-      ...new Set(creations.map((item) => item.category)),
-    ];
-    const categories = [
-      { key: "all", label: "Alles", icon: "🎨" }, // Always show "Alles"
-    ];
+  const availableCategories = useMemo(() => {
+    const existingCategories = new Set(creations.map((item) => item.category));
+    const categories = [allCategories[0]]; 
 
-    // Add categories that have items
     allCategories.slice(1).forEach((category) => {
-      if (existingCategories.includes(category.key)) {
+      if (existingCategories.has(category.key)) {
         categories.push(category);
       }
     });
 
-    setAvailableCategories(categories);
+    return categories;
+  }, [allCategories, creations]);
 
-    // Set the first available category as active if current selectedCategory is not available
-    if (
-      categories.length > 0 &&
-      !categories.some((cat) => cat.key === selectedCategory)
-    ) {
-      setSelectedCategory(categories[0].key);
+  React.useEffect(() => {
+    if (!availableCategories.some((cat) => cat.key === selectedCategory)) {
+      setSelectedCategory(availableCategories[0]?.key || "all");
     }
-  }, [selectedCategory, allCategories, creations]);
+  }, [availableCategories, selectedCategory]);
 
   const filteredCreations =
     selectedCategory === "all"
@@ -113,7 +104,7 @@ const Portfolio = () => {
   );
 
   const CreationCard = ({ creation }) => (
-    <div className="group card-bold overflow-hidden">
+    <div className="group card-bold portfolio-card overflow-hidden">
       {creation.image && (
         <div className="aspect-video w-full overflow-hidden bg-neutral-100 flex items-center justify-center">
           {creation.id === 1 ? (
@@ -127,7 +118,7 @@ const Portfolio = () => {
               alt={creation.title}
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover"
             />
           )}
         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useTranslation } from "../translations";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -95,53 +95,66 @@ const Bibliotheek = () => {
   }, []);
 
   // Determine which tabs to show based on available data
-  const types = [...new Set(items.map((item) => item.type))];
-  const availableTabs = [];
+  const types = useMemo(
+    () => [...new Set(items.map((item) => item.type))],
+    [items],
+  );
 
-  if (types.includes("Series") || types.includes("Film")) {
-    availableTabs.push({ key: "series", label: t("library.tabs.series") });
-  }
-  if (types.includes("Book")) {
-    availableTabs.push({ key: "boeken", label: t("library.tabs.books") });
-  }
-  if (types.includes("Poetry")) {
-    availableTabs.push({ key: "poezie", label: t("library.tabs.poetry") });
-  }
-  if (types.includes("Article")) {
-    availableTabs.push({ key: "artikelen", label: t("library.tabs.articles") });
-  }
+  const availableTabs = useMemo(() => {
+    const tabs = [];
+    if (types.includes("Series") || types.includes("Film")) {
+      tabs.push({ key: "series", label: t("library.tabs.series") });
+    }
+    if (types.includes("Book")) {
+      tabs.push({ key: "boeken", label: t("library.tabs.books") });
+    }
+    if (types.includes("Poetry")) {
+      tabs.push({ key: "poezie", label: t("library.tabs.poetry") });
+    }
+    if (types.includes("Article")) {
+      tabs.push({ key: "artikelen", label: t("library.tabs.articles") });
+    }
+    return tabs;
+  }, [types, t]);
 
   // First filter by active tab, then split into dated and undated, then sort
-  const getFilteredItems = () => {
-    let filtered = items;
-
+  const filteredItems = useMemo(() => {
     if (activeTab === "series") {
-      filtered = items.filter(
+      return items.filter(
         (item) => item.type === "Series" || item.type === "Film",
       );
-    } else if (activeTab === "boeken") {
-      filtered = items.filter((item) => item.type === "Book");
-    } else if (activeTab === "poezie") {
-      filtered = items.filter((item) => item.type === "Poetry");
-    } else if (activeTab === "artikelen") {
-      filtered = items.filter((item) => item.type === "Article");
     }
-    return filtered;
-  };
-
-  const filteredItems = getFilteredItems();
+    if (activeTab === "boeken") {
+      return items.filter((item) => item.type === "Book");
+    }
+    if (activeTab === "poezie") {
+      return items.filter((item) => item.type === "Poetry");
+    }
+    if (activeTab === "artikelen") {
+      return items.filter((item) => item.type === "Article");
+    }
+    return items;
+  }, [activeTab, items]);
 
   // Only split if sorting by date
   const shouldSplit = sortType === "finishedDate";
 
-  const datedItems = shouldSplit
-    ? filteredItems.filter((item) => item.finishedDate)
-    : filteredItems;
-  const undatedItems = shouldSplit
-    ? filteredItems.filter((item) => !item.finishedDate)
-    : [];
+  const datedItems = useMemo(
+    () =>
+      shouldSplit
+        ? filteredItems.filter((item) => item.finishedDate)
+        : filteredItems,
+    [filteredItems, shouldSplit],
+  );
+  const undatedItems = useMemo(
+    () =>
+      shouldSplit
+        ? filteredItems.filter((item) => !item.finishedDate)
+        : [],
+    [filteredItems, shouldSplit],
+  );
 
-  const sortItems = (itemsToSort, isUndated = false) => {
+  const sortItems = useCallback((itemsToSort, isUndated = false) => {
     return [...itemsToSort].sort((a, b) => {
       if (sortType === "finishedDate") {
         if (isUndated) return (a.title || "").localeCompare(b.title || "");
@@ -163,21 +176,24 @@ const Bibliotheek = () => {
       }
       return 0;
     });
-  };
+  }, [sortType]);
 
-  const mainItems = sortItems(datedItems);
-  const archiveItems = sortItems(undatedItems, true);
+  const mainItems = useMemo(() => sortItems(datedItems), [datedItems, sortItems]);
+  const archiveItems = useMemo(
+    () => sortItems(undatedItems, true),
+    [sortItems, undatedItems],
+  );
 
-  const openModal = (item) => {
+  const openModal = useCallback((item) => {
     lastFocusedElement.current = document.activeElement;
     setSelectedItem(item);
-  };
-  const closeModal = () => {
+  }, []);
+  const closeModal = useCallback(() => {
     setSelectedItem(null);
     if (lastFocusedElement.current?.focus) {
       lastFocusedElement.current.focus();
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (!selectedItem) return undefined;
@@ -188,7 +204,7 @@ const Bibliotheek = () => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedItem]);
+  }, [closeModal, selectedItem]);
 
   const TabButton = ({ tab, label }) => (
     <button

@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useTranslation } from "../translations";
 import { useLanguage } from "../contexts/LanguageContext";
 
 // Helper function to correctly parse dd-mm-yyyy format
 const parseDate = (dateString) => {
+  if (!dateString) return new Date(0);
   const [day, month, year] = dateString.split("-").map(Number);
   return new Date(year, month - 1, day);
 };
@@ -19,7 +20,7 @@ const Fotos = () => {
     fetch("/content/gallery.json")
       .then((response) => response.json())
       .then((data) => {
-        const sortedData = data.sort((a, b) => {
+        const sortedData = [...data].sort((a, b) => {
           const dateA = parseDate(a.date);
           const dateB = parseDate(b.date);
           return dateB - dateA; // Sort descending (newest first)
@@ -29,17 +30,17 @@ const Fotos = () => {
       .catch((error) => console.error("Error fetching gallery data:", error));
   }, []);
 
-  const openModal = (image) => {
+  const openModal = useCallback((image) => {
     lastFocusedElement.current = document.activeElement;
     setSelectedImage(image);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedImage(null);
     if (lastFocusedElement.current?.focus) {
       lastFocusedElement.current.focus();
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (!selectedImage) return undefined;
@@ -50,17 +51,22 @@ const Fotos = () => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedImage]);
+  }, [closeModal, selectedImage]);
 
-  // Helper to format date for display
-  const formatDate = (dateString) => {
-    const date = parseDate(dateString);
-    return date.toLocaleDateString(language === "en" ? "en-GB" : "nl-NL", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
+  const dateFormatter = useMemo(
+    () =>
+      new Intl.DateTimeFormat(language === "en" ? "en-GB" : "nl-NL", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+    [language],
+  );
+
+  const formatDate = useCallback(
+    (dateString) => dateFormatter.format(parseDate(dateString)),
+    [dateFormatter],
+  );
 
   return (
     <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-24 pt-32 pb-10 md:py-16">
