@@ -27,7 +27,7 @@ export const translations = {
       error: "Fout bij het laden van muziek",
       currentlyPlaying: "Momenteel aan het Luisteren",
       lastListened: "Laatst Geluisterd",
-      notListening: "Momenteel niets via Spotify geluisterd",
+      notListening: "Momenteel niets via Spotify aan het luisteren",
       loadingTrack: "Huidig nummer laden...",
       errorLoading: "Fout bij Laden",
       topArtists: "Top Artiesten",
