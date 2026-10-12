@@ -137,6 +137,13 @@ export const translations = {
       viewMore: "Meer bekijken",
     },
 
+    // 404 page
+    notfound: {
+      title: "Pagina niet gevonden",
+      text: "Deze pagina bestaat niet of is verplaatst.",
+      home: "Terug naar home",
+    },
+
     // Footer
     footer: {
       copyright: "Alle rechten voorbehouden.",
@@ -280,6 +287,13 @@ export const translations = {
       error: "An error occurred",
       close: "Close",
       viewMore: "View more",
+    },
+
+    // 404 page
+    notfound: {
+      title: "Page not found",
+      text: "This page does not exist or has been moved.",
+      home: "Back to home",
     },
 
     // Footer

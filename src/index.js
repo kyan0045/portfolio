@@ -6,6 +6,7 @@ import OverMij from "./pages/OverMij";
 import Bibliotheek from "./pages/Bibliotheek";
 import Fotos from "./pages/Fotos";
 import Portfolio from "./pages/Portfolio";
+import NotFound from "./pages/NotFound";
 import reportWebVitals from "./reportWebVitals";
 import {
   BrowserRouter as Router,
@@ -370,6 +371,12 @@ function AppWithLayout() {
           path="/portfolio"
           element={<Navigate to="/nl/portfolio" replace />}
         />
+
+        {/* In-app fallback for client-side navigation to unknown paths.
+            Note: unknown paths get a real HTTP 404 at the edge via
+            vercel.json rewrites + public/404.html; this only renders
+            when index.html is already loaded. */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AppLayout>
   );
@@ -391,6 +398,7 @@ const DutchRoutes = () => (
     <Route path="/bibliotheek" element={<Bibliotheek />} />
     <Route path="/fotos" element={<Fotos />} />
     <Route path="/portfolio" element={<Portfolio />} />
+    <Route path="*" element={<NotFound />} />
   </Routes>
 );
 
@@ -403,6 +411,7 @@ const EnglishRoutes = () => (
     <Route path="/library" element={<Bibliotheek />} />
     <Route path="/photos" element={<Fotos />} />
     <Route path="/portfolio" element={<Portfolio />} />
+    <Route path="*" element={<NotFound />} />
   </Routes>
 );
 
